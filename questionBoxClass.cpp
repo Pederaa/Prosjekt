@@ -18,4 +18,7 @@ QuestionBox::QuestionBox(){
     default_random_engine generator(rd());
     xPosition = (generator()%7)*200;
     speed = (generator()%5 + 1)*2;
+
+    question = "Hello there";
+    answer = "General Kenobi";
 }

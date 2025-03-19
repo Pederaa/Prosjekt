@@ -3,6 +3,7 @@
 #include "windowManager.h"
 #include "QuestionBoxClass.h"
 #include <random>
+#include "readKeyInput.h"
 
 void clicked(){
     cout << "Hei" << std::endl;
@@ -14,6 +15,7 @@ void drawWindow(){
     std::vector<QuestionBox> blocks;
     QuestionBox newBlock = QuestionBox();
     blocks.push_back(newBlock);
+    std::string c = "";
     
     default_random_engine generator;
     while(!window.should_close()){
@@ -26,6 +28,9 @@ void drawWindow(){
         for(int i=0; i<blocks.size(); i++){
             blocks.at(i).moveDown(window);
         }
+
+        readKeyInput(window, c);
+
         window.next_frame();
     }
 
