@@ -1,11 +1,8 @@
 #include "std_lib_facilities.h"
+#include "windowManager.h"
 
 int main() {
-    cout << "Pengviner eller skilpadder :) :)?";
-    string x;
-    cin >> x;
-    cout << x;
-    
+    drawWindow();
     return 0;
 }
 
