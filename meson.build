@@ -28,6 +28,7 @@ src = []
 exe = executable(
   'program',
   src,
+'backgroundGenerator.cpp',
 'main.cpp',
 'questionBoxClass.cpp',
 'readKeyInput.cpp',

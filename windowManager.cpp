@@ -2,24 +2,24 @@
 #include "std_lib_facilities.h"
 #include "windowManager.h"
 #include "QuestionBoxClass.h"
-#include <random>
 #include "readKeyInput.h"
+#include "backgroundGenerator.h"
 
-void clicked(){
-    cout << "Hei" << std::endl;
-}
+#include <random>
 
 void drawWindow(){
     TDT4102::AnimationWindow window; //Lager en instanse av et animasjonsvindu.
     
-    std::vector<QuestionBox> blocks;
+    static std::vector<QuestionBox> blocks;
     QuestionBox newBlock = QuestionBox();
     blocks.push_back(newBlock);
     std::string c = "";
     
     default_random_engine generator;
     while(!window.should_close()){
-        if (generator()%10 == 1){ // Legger til nye blokker hver 10. frame.  
+        drawBackground(window);
+
+        if (generator()%10 == 1){ // Legger til nye blokker ca. hver 10. frame.  
             newBlock = QuestionBox();
             blocks.push_back(newBlock);
         }
@@ -29,8 +29,13 @@ void drawWindow(){
             blocks.at(i).moveDown(window);
         }
 
-        readKeyInput(window, c);
-
+        if (!blocks.empty()){
+            if (blocks.at(0).yPosition > 500){
+                blocks.erase(blocks.begin());
+            }
+        }
+    
+        getCharInput(window, c);
         window.next_frame();
     }
 
