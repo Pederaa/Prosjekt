@@ -14,11 +14,13 @@ void runGame(){
     TDT4102::AnimationWindow window; //Lager en instanse av et animasjonsvindu.
     default_random_engine generator;
     std::string c = "";
-        
-    initlizeEggs();
+
+    int lanes[] = {50, 250, 450, 750, 950, 1150};
+    initlizeEggs(lanes);
+
     while(!window.should_close()){
         drawBackground(window);
-        drawBlocks(window, generator);
+        drawBlocks(window, generator, lanes);
         drawEggs(window);
     
         getCharInput(window, c);
@@ -30,9 +32,9 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
-void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator){
+void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator, int lanes[]){
     if (generator()%10 == 1){ // Legger til nye blokker ca. hver 10. frame.  
-        QuestionBox newBlock = QuestionBox();
+        QuestionBox newBlock = QuestionBox(lanes);
         blocks.push_back(newBlock);
     }
 

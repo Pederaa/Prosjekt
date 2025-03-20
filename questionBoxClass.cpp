@@ -31,10 +31,10 @@ void QuestionBox::drawBoks(TDT4102::AnimationWindow& window){
     window.draw_text({xPosition + 83, yPosition}, "TM", textColor, 10, textFont);
 }
 
-QuestionBox::QuestionBox(){
+QuestionBox::QuestionBox(int lanes[]){
     random_device rd;
     default_random_engine generator(rd());
-    xPosition = (generator()%7)*200;
+    xPosition = lanes[(generator()%sizeof(lanes))] - width/2;
     speed = (generator()%5 + 1)*2;
 
     question = "Hello there";

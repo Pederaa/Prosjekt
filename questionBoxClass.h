@@ -16,7 +16,7 @@ class QuestionBox{
     std::string answer;
 
     public:
-        QuestionBox();
+        QuestionBox(int lanes[]);
         int posX();
         int posY();
         bool answerCorrect(std::string answer);
