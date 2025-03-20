@@ -1,20 +1,22 @@
-#include "animationWindow.h"
+#include "AnimationWindow.h"
 #include "std_lib_facilities.h"
 #include "windowManager.h"
-#include "QuestionBoxClass.h"
+#include "questionBoxClass.h"
 #include "readKeyInput.h"
 #include "backgroundGenerator.h"
 #include "typingScreen.h"
 
 #include <random>
+std::vector<QuestionBox> blocks;
 
 void beginGame(){
     TDT4102::AnimationWindow window; //Lager en instanse av et animasjonsvindu.
+    default_random_engine generator;
     std::string c = "";
         
     while(!window.should_close()){
         drawBackground(window);
-        drawBlocks(window);
+        drawBlocks(window, generator);
     
         getCharInput(window, c);
         drawTypingScreen(window, c);
@@ -25,9 +27,8 @@ void beginGame(){
     cout << "Vindu lukket" << endl;
 }
 
-void drawBlocks(TDT4102::AnimationWindow window){
-    static std::vector<QuestionBox> blocks;
-    default_random_engine generator;
+void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator){
+    std::cout << blocks.size() << std::endl;
 
     if (generator()%10 == 1){ // Legger til nye blokker ca. hver 10. frame.  
         QuestionBox newBlock = QuestionBox();
