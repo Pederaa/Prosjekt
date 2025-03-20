@@ -9,16 +9,9 @@ void QuestionBox::moveDown(TDT4102::AnimationWindow& window){
 }
 
 void QuestionBox::drawBoks(TDT4102::AnimationWindow& window){
-    TDT4102::Color writingColor = TDT4102::Color::black;
-    TDT4102::Font font = TDT4102::Font::times_bold;
-    
-    TDT4102::Point position = {xPosition, yPosition};
-    TDT4102::Point tmPosition = {xPosition + 83, yPosition};
-    string h = "TM";
-
-    window.draw_rectangle(position, width, height, fillColor);
-    window.draw_text(position, question, writingColor, 20, font);
-    window.draw_text(tmPosition, h, writingColor, 10, font);
+    window.draw_rectangle({xPosition, yPosition}, width, height, fillColor);
+    window.draw_text({xPosition, yPosition}, question, textColor, 20, textFont);
+    window.draw_text({xPosition + 83, yPosition}, "TM", textColor, 10, textFont);
 }
 
 QuestionBox::QuestionBox(){

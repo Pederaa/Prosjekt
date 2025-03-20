@@ -9,7 +9,7 @@
 #include <random>
 std::vector<QuestionBox> blocks;
 
-void beginGame(){
+void runGame(){
     TDT4102::AnimationWindow window; //Lager en instanse av et animasjonsvindu.
     default_random_engine generator;
     std::string c = "";
@@ -24,7 +24,7 @@ void beginGame(){
         window.next_frame();
     }
 
-    cout << "Vindu lukket" << endl;
+    cout << "Spill over" << endl;
 }
 
 void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator){

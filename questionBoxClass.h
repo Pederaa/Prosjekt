@@ -10,6 +10,9 @@ class QuestionBox{
         int speed = 3;
 
         TDT4102::Color fillColor = TDT4102::Color::light_sea_green;
+        TDT4102::Color textColor = TDT4102::Color::black;
+        TDT4102::Font textFont = TDT4102::Font::times_bold;
+
         std::string question;
         std::string answer;
 

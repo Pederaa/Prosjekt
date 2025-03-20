@@ -2,7 +2,7 @@
 #include "windowManager.h"
 
 int main() {
-    beginGame();
+    runGame();
     return 0;
 }
 
