@@ -28,8 +28,6 @@ void runGame(){
 }
 
 void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator){
-    std::cout << blocks.size() << std::endl;
-
     if (generator()%10 == 1){ // Legger til nye blokker ca. hver 10. frame.  
         QuestionBox newBlock = QuestionBox();
         blocks.push_back(newBlock);
