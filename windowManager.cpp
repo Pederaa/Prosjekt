@@ -38,7 +38,7 @@ void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generat
     }
 
     if (!blocks.empty()){
-        if (blocks.at(0).yPosition > 500){
+        if (blocks.at(0).posY() > 500){
             blocks.erase(blocks.begin());
         }
     }

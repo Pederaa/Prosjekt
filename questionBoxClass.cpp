@@ -1,7 +1,24 @@
 #include "QuestionBoxClass.h"
 #include "std_lib_facilities.h"
-#include "animationWindow.h"
 #include <random>
+#include "animationWindow.h"
+
+int QuestionBox::posY(){
+    return this->xPosition;
+}
+
+int QuestionBox::posX(){
+    return this->xPosition;
+}
+
+bool QuestionBox::answerCorrect(std::string guess){
+    if(guess == answer){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 void QuestionBox::moveDown(TDT4102::AnimationWindow& window){
     yPosition += speed;
