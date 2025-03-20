@@ -28,7 +28,9 @@ src = []
 exe = executable(
   'program',
   src,
+'Egg.cpp',
 'backgroundGenerator.cpp',
+'eggsManager.cpp',
 'main.cpp',
 'questionBoxClass.cpp',
 'readKeyInput.cpp',

@@ -5,6 +5,7 @@
 #include "readKeyInput.h"
 #include "backgroundGenerator.h"
 #include "typingScreen.h"
+#include "eggsManager.h"
 
 #include <random>
 std::vector<QuestionBox> blocks;
@@ -14,9 +15,11 @@ void runGame(){
     default_random_engine generator;
     std::string c = "";
         
+    initlizeEggs();
     while(!window.should_close()){
         drawBackground(window);
         drawBlocks(window, generator);
+        drawEggs(window);
     
         getCharInput(window, c);
         drawTypingScreen(window, c);
