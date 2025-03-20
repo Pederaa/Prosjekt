@@ -2,17 +2,24 @@
 #include "std_lib_facilities.h"
 
 static bool isKeyDown = false;
-void getCharInput(TDT4102::AnimationWindow& window, std::string& t){
+void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     if (window.is_key_down(KeyboardKey::A)){
         if(!isKeyDown){
-            t += "A";
+            typeText += "A";
             isKeyDown = true;
         }
     }
     else if (window.is_key_down(KeyboardKey::B)){
         if(!isKeyDown){
-            t += "B";
+            typeText += "B";
             isKeyDown = true;
+        }
+    }
+
+    else if (window.is_key_down(KeyboardKey::ENTER)){
+        if(!isKeyDown){
+            std::cout << "Gjetter: " << typeText << std::endl;
+            typeText = "";
         }
     }
     else{
