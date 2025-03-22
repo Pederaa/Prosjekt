@@ -1,8 +1,8 @@
 #include "std_lib_facilities.h"
-#include "windowManager.h"
+#include "mainPage.h"
 
 int main() {
-    runGame();
+    openMainPage();
     return 0;
 }
 

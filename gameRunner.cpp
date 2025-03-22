@@ -1,6 +1,6 @@
 #include "AnimationWindow.h"
 #include "std_lib_facilities.h"
-#include "windowManager.h"
+#include "gameRunner.h"
 #include "questionBoxClass.h"
 #include "readKeyInput.h"
 #include "backgroundGenerator.h"
