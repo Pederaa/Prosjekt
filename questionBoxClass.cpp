@@ -40,3 +40,7 @@ QuestionBox::QuestionBox(int lanes[]){
     question = "Hello there";
     answer = "General Kenobi";
 }
+
+void deleteBlock(){
+    // SKal slette blokk
+}

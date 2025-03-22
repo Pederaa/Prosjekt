@@ -22,4 +22,5 @@ class QuestionBox{
         bool answerCorrect(std::string answer);
         void moveDown(TDT4102::AnimationWindow& window);
         void drawBoks(TDT4102::AnimationWindow& window);
+        void deleteBlock();
 };
