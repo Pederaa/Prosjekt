@@ -1,4 +1,4 @@
-#include "animationWindow.h"
+#include "AnimationWindow.h"
 #include "std_lib_facilities.h"
 #include <unordered_map>
 
@@ -8,7 +8,7 @@ std::unordered_map<KeyboardKey, char> keyMap = {
     {KeyboardKey::K, 'K'}, {KeyboardKey::L, 'L'}, {KeyboardKey::M, 'M'}, {KeyboardKey::N, 'N'}, {KeyboardKey::O, 'O'},
     {KeyboardKey::P, 'P'}, {KeyboardKey::Q, 'Q'}, {KeyboardKey::R, 'R'}, {KeyboardKey::S, 'S'}, {KeyboardKey::T, 'T'},
     {KeyboardKey::U, 'U'}, {KeyboardKey::V, 'V'}, {KeyboardKey::W, 'W'}, {KeyboardKey::X, 'X'}, {KeyboardKey::Y, 'Y'},
-    {KeyboardKey::Z, 'Z'},
+    {KeyboardKey::Z, 'Z'}, {KeyboardKey::SPACE, ' '},
     {KeyboardKey::KEY_0, '0'}, {KeyboardKey::KEY_1, '1'}, {KeyboardKey::KEY_2, '2'}, {KeyboardKey::KEY_3, '3'},
     {KeyboardKey::KEY_4, '4'}, {KeyboardKey::KEY_5, '5'}, {KeyboardKey::KEY_6, '6'}, {KeyboardKey::KEY_7, '7'},
     {KeyboardKey::KEY_8, '8'}, {KeyboardKey::KEY_9, '9'}
@@ -16,20 +16,13 @@ std::unordered_map<KeyboardKey, char> keyMap = {
 
 static bool isKeyDown = false;
 void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
-
-    for (const auto& [key, value] : keyMap) {
-        if (window.is_key_down(key) && !isKeyDown) {
-        typeText += value;
-        isKeyDown = true;
-        break;  // Prevent multiple key presses at once
-        }
-    }
-
+    std::cout << isKeyDown << std::endl;
     if (window.is_key_down(KeyboardKey::BACKSPACE)){
-        if(!isKeyDown && sizeof(typeText) >= 1){
+        if(!isKeyDown && !typeText.empty()){
             typeText.pop_back();
             isKeyDown = true;
         }
+        return;
     }
 
     else if (window.is_key_down(KeyboardKey::ENTER)){
@@ -37,8 +30,21 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
             std::cout << "Gjetter: " << typeText << std::endl;
             typeText = "";
         }
+        return;
     }
     else{
-        isKeyDown = false;
+        //isKeyDown = false;
     }
+
+    for (const auto& [key, value] : keyMap) {
+        if (window.is_key_down(key)) {
+            if (!isKeyDown){
+                typeText += value;
+                isKeyDown = true;
+            }
+            return;  // Prevent multiple key presses at once
+        }
+    }
+
+    isKeyDown = false;
 }

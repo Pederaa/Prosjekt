@@ -32,7 +32,7 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
-void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator, int lanes[]){
+void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, int lanes[]){
     if (generator()%10 == 1){ // Legger til nye blokker ca. hver 10. frame.  
         QuestionBox newBlock = QuestionBox(lanes);
         blocks.push_back(newBlock);

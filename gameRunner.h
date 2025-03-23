@@ -3,4 +3,4 @@
 #include <random>
 
 void runGame();
-void drawBlocks(TDT4102::AnimationWindow& window, default_random_engine& generator, int lanes[]);
+void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, int lanes[]);
