@@ -2,6 +2,9 @@
 #include "std_lib_facilities.h"
 #include <random>
 #include "animationWindow.h"
+#include <algorithm>
+#include <cctype>
+#include <string>
 
 int QuestionBox::posY(){
     return this->xPosition;
@@ -12,6 +15,12 @@ int QuestionBox::posX(){
 }
 
 bool QuestionBox::answerCorrect(std::string guess){
+    std::transform(guess.begin(), guess.end(), guess.begin(),
+    [](unsigned char c){ return std::tolower(c); });
+
+    std::transform(answer.begin(), answer.end(), answer.begin(),
+    [](unsigned char c){ return std::tolower(c); });
+
     if(guess == answer){
         return true;
     }
@@ -31,16 +40,16 @@ void QuestionBox::drawBoks(TDT4102::AnimationWindow& window){
     window.draw_text({xPosition + 83, yPosition}, "TM", textColor, 10, textFont);
 }
 
+void QuestionBox::deleteBlock(){
+    // SKal slette blokk
+}
+
 QuestionBox::QuestionBox(int lanes[]){
     random_device rd;
     default_random_engine generator(rd());
     xPosition = lanes[(generator()%sizeof(lanes))] - width/2;
-    speed = (generator()%5 + 1)*2;
+    speed = (generator()%5 + 1 );
 
     question = "Hello there";
-    answer = "General Kenobi";
-}
-
-void deleteBlock(){
-    // SKal slette blokk
+    answer = "aa";
 }

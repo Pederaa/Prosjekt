@@ -1,5 +1,7 @@
 #include "AnimationWindow.h"
 #include "std_lib_facilities.h"
+#include "gameRunner.h"
+
 #include <unordered_map>
 
 std::unordered_map<KeyboardKey, char> keyMap = {
@@ -16,7 +18,6 @@ std::unordered_map<KeyboardKey, char> keyMap = {
 
 static bool isKeyDown = false;
 void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
-    std::cout << isKeyDown << std::endl;
     if (window.is_key_down(KeyboardKey::BACKSPACE)){
         if(!isKeyDown && !typeText.empty()){
             typeText.pop_back();
@@ -27,13 +28,12 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
 
     else if (window.is_key_down(KeyboardKey::ENTER)){
         if(!isKeyDown){
+            checkIfGuessIsCorrect(typeText);
             std::cout << "Gjetter: " << typeText << std::endl;
             typeText = "";
+            isKeyDown = true;
         }
         return;
-    }
-    else{
-        //isKeyDown = false;
     }
 
     for (const auto& [key, value] : keyMap) {

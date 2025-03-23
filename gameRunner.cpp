@@ -33,7 +33,7 @@ void runGame(){
 }
 
 void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, int lanes[]){
-    if (generator()%10 == 1){ // Legger til nye blokker ca. hver 10. frame.  
+    if (generator()%40 == 1){ // Legger til nye blokker ca. hver 10. frame.  
         QuestionBox newBlock = QuestionBox(lanes);
         blocks.push_back(newBlock);
     }
@@ -45,6 +45,20 @@ void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& ge
     if (!blocks.empty()){
         if (blocks.at(0).posY() > 500){
             blocks.erase(blocks.begin());
+        }
+    }
+}
+
+void checkIfGuessIsCorrect(std::string guess){
+    if (blocks.size() == 0){
+        return;
+    }
+
+    for (int i=0; i<blocks.size(); i++){
+        if(blocks[i].answerCorrect(guess)){
+            blocks.erase(blocks.begin() + i);
+            std::cout << "Sletter blokka" << std::endl;
+            return;
         }
     }
 }
