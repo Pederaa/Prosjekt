@@ -57,7 +57,7 @@ void checkIfGuessIsCorrect(std::string guess){
     for (int i=0; i<blocks.size(); i++){
         if(blocks[i].answerCorrect(guess)){
             blocks.erase(blocks.begin() + i);
-            std::cout << "Sletter blokka" << std::endl;
+            std::cout << "Sletter blokka:" << i << std::endl;
             return;
         }
     }
