@@ -31,6 +31,7 @@ exe = executable(
 'Egg.cpp',
 'backgroundGenerator.cpp',
 'eggsManager.cpp',
+'explotionManager.cpp',
 'gameRunner.cpp',
 'main.cpp',
 'mainPage.cpp',
