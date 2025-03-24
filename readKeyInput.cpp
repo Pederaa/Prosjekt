@@ -42,7 +42,7 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
                 typeText += value;
                 isKeyDown = true;
             }
-            return;  // Prevent multiple key presses at once
+            return;
         }
     }
 
