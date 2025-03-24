@@ -33,6 +33,7 @@ exe = executable(
 'eggsManager.cpp',
 'explotionManager.cpp',
 'gameRunner.cpp',
+'laserCannon.cpp',
 'main.cpp',
 'mainPage.cpp',
 'numQuestion.cpp',

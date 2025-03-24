@@ -1,0 +1,16 @@
+#pragma once
+#include "questionBoxClass.h"
+
+class laserCannon{
+    TDT4102::Point basePosition;
+    TDT4102::Point endPosition;
+    TDT4102::Color Color = TDT4102::Color::black;
+    int length = 10;
+
+    float rotation = 3.14/2;
+
+    public:
+        laserCannon(int posX, int posY);
+        void poinCannonAt(int posX, int posY);
+        void drawCannon(TDT4102::AnimationWindow& window);
+};

@@ -6,6 +6,7 @@
 #include "backgroundGenerator.h"
 #include "typingScreen.h"
 #include "eggsManager.h"
+#include "laserCannon.h"
 
 #include <random>
 std::vector<QuestionBox> blocks;
@@ -17,15 +18,19 @@ void runGame(){
 
     int lanes[] = {50, 250, 450, 750, 950, 1150};
     initlizeEggs(lanes);
-
-    while(!window.should_close()){
-        drawBackground(window);
-        drawBlocks(window, generator, lanes);
-        drawEggs(window);
+    laserCannon l(window.width()/2, window.height()-100);
     
+    while(!window.should_close()){
+        l.drawCannon(window);
+        getCharInput(window, c);
+        drawBackground(window);
+        getCharInput(window, c);
+        drawBlocks(window, generator, lanes);
+        getCharInput(window, c);
+        drawEggs(window);
         getCharInput(window, c);
         drawTypingScreen(window, c);
-
+        getCharInput(window, c);
         window.next_frame();
     }
 
