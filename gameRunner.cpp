@@ -18,7 +18,8 @@ void runGame(){
 
     int lanes[] = {50, 250, 450, 750, 950, 1150};
     initlizeEggs(lanes);
-    laserCannon l(window.width()/2, window.height()-100);
+    laserCannon l(window.width()/2, window.height()-300);
+    l.poinCannonAt(window.width()/2, 1);
     
     while(!window.should_close()){
         l.drawCannon(window);
@@ -62,7 +63,6 @@ void checkIfGuessIsCorrect(std::string guess){
     for (int i=0; i<blocks.size(); i++){
         if(blocks[i].answerCorrect(guess)){
             blocks.erase(blocks.begin() + i);
-            std::cout << "Sletter blokka:" << i << std::endl;
             return;
         }
     }

@@ -29,7 +29,6 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     else if (window.is_key_down(KeyboardKey::ENTER)){
         if(!isKeyDown){
             checkIfGuessIsCorrect(typeText);
-            std::cout << "Gjetter: " << typeText << std::endl;
             typeText = "";
             isKeyDown = true;
         }
