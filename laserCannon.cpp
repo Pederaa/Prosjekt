@@ -12,7 +12,7 @@ void laserCannon::pointCannonAt(QuestionBox& target){
     float k = sqrt(pow(length,2)/(pow(target.posX() - basePosition.x, 2) + pow(target.posY() - basePosition.y, 2)));
 
     float tempX = basePosition.x + k*target.posX();
-    float tempY = basePosition.y + k*target.posY();
+    float tempY = - 0 - (basePosition.y + k*target.posY());
     endPosition = {static_cast<int>(std::round(tempX)), static_cast<int>(std::round(tempY))};
 
     cout << "{" << tempX << ", " << tempY << "}" << endl;
