@@ -15,11 +15,6 @@ int QuestionBox::posX(){
 }
 
 bool QuestionBox::answerCorrect(std::string guess){
-    //std::transform(guess.begin(), guess.end(), guess.begin(),[](unsigned char c){ return std::tolower(c); });
-    //std::transform(answer.begin(), answer.end(), answer.begin(),[](unsigned char c){ return std::tolower(c);});
-
-    std::cout << guess << " : " << answer;
-
     return guess == answer;
 }
 

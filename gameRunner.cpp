@@ -61,12 +61,18 @@ void checkIfGuessIsCorrect(std::string guess){
         return;
     }
 
+    std::cout << std::endl;
+    std::cout << std::endl;
+
     for (int i=0; i<blocks.size(); i++){
         if(blocks[i].answerCorrect(guess)){
-            std::cout << ": True";
+            //std::cout << ": True" << endl;;
             l.pointCannonAt(blocks[i].posX(), blocks[i].posY());
             blocks.erase(blocks.begin() + i);
             break;
+        }
+        else{
+            //std::cout << ": False" << endl;;
         }
     }
 }

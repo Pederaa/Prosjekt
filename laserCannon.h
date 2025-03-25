@@ -5,7 +5,7 @@ class laserCannon{
     TDT4102::Point basePosition;
     TDT4102::Point endPosition;
     TDT4102::Color Color = TDT4102::Color::black;
-    int length = 10;
+    int length = 100;
 
     float rotation = 3.14/2;
 
