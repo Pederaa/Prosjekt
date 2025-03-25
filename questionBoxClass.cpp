@@ -15,18 +15,12 @@ int QuestionBox::posX(){
 }
 
 bool QuestionBox::answerCorrect(std::string guess){
-    std::transform(guess.begin(), guess.end(), guess.begin(),
-    [](unsigned char c){ return std::tolower(c); });
+    //std::transform(guess.begin(), guess.end(), guess.begin(),[](unsigned char c){ return std::tolower(c); });
+    //std::transform(answer.begin(), answer.end(), answer.begin(),[](unsigned char c){ return std::tolower(c);});
 
-    std::transform(answer.begin(), answer.end(), answer.begin(),
-    [](unsigned char c){ return std::tolower(c); });
+    std::cout << guess << " : " << answer;
 
-    if(guess == answer){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return guess == answer;
 }
 
 void QuestionBox::moveDown(TDT4102::AnimationWindow& window){
@@ -51,5 +45,5 @@ QuestionBox::QuestionBox(int lanes[]){
     speed = (generator()%5 + 1 );
 
     question = "Hello there";
-    answer = "aa";
+    answer = "AA";
 }

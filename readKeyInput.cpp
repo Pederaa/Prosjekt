@@ -28,7 +28,7 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     }
 
     else if (window.is_key_down(KeyboardKey::ENTER)){
-        if(!isKeyPressed){
+        if(!isKeyPressed && !typeText.empty()){
             checkIfGuessIsCorrect(typeText);
             typeText = "";
         }

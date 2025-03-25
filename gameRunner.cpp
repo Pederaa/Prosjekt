@@ -62,9 +62,11 @@ void checkIfGuessIsCorrect(std::string guess){
     }
 
     for (int i=0; i<blocks.size(); i++){
-        if(blocks[i].answerCorrect(guess));
+        if(blocks[i].answerCorrect(guess)){
+            std::cout << ": True";
             l.pointCannonAt(blocks[i].posX(), blocks[i].posY());
             blocks.erase(blocks.begin() + i);
-            return;
+            break;
         }
     }
+}
