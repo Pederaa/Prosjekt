@@ -10,6 +10,7 @@
 
 #include <random>
 std::vector<QuestionBox> blocks;
+laserCannon l(1,2);
 
 void runGame(){
     TDT4102::AnimationWindow window; //Lager en instanse av et animasjonsvindu.
@@ -18,8 +19,8 @@ void runGame(){
 
     int lanes[] = {50, 250, 450, 750, 950, 1150};
     initlizeEggs(lanes);
-    laserCannon l(window.width()/2, window.height()-300);
-    l.poinCannonAt(window.width()/2, 1);
+    l.setPostion(window.width()/2, window.height()-300);
+    l.pointCannonAt(window.width()/2, 1);
     
     while(!window.should_close()){
         l.drawCannon(window);
@@ -61,9 +62,9 @@ void checkIfGuessIsCorrect(std::string guess){
     }
 
     for (int i=0; i<blocks.size(); i++){
-        if(blocks[i].answerCorrect(guess)){
+        if(blocks[i].answerCorrect(guess));
+            l.pointCannonAt(blocks[i].posX(), blocks[i].posY());
             blocks.erase(blocks.begin() + i);
             return;
         }
     }
-}
