@@ -15,8 +15,8 @@ void laserCannon::pointCannonAt(int posX, int posY){
     float tempY = basePosition.y + l*posY;
     endPosition = {static_cast<int>(std::round(tempX)), static_cast<int>(std::round(tempY))};
 
-    cout << "{" << tempX << ", " << tempY << "}" << endl;
-    cout << "{" << endPosition.x << ", " << endPosition.y << "}" << endl << endl << endl << endl;
+    //cout << "{" << tempX << ", " << tempY << "}" << endl;
+    //cout << "{" << endPosition.x << ", " << endPosition.y << "}" << endl << endl << endl << endl;
 }
 
 void laserCannon::drawCannon(TDT4102::AnimationWindow& window){ 
