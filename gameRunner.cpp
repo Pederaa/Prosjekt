@@ -20,7 +20,6 @@ void runGame(){
     int lanes[] = {50, 250, 450, 750, 950, 1150};
     initlizeEggs(lanes);
     l.setPostion(window.width()/2, window.height()-300);
-    l.pointCannonAt(window.width()/2, 1);
     
     while(!window.should_close()){
         l.drawCannon(window);
@@ -67,7 +66,7 @@ void checkIfGuessIsCorrect(std::string guess){
     for (int i=0; i<blocks.size(); i++){
         if(blocks[i].answerCorrect(guess)){
             //std::cout << ": True" << endl;;
-            l.pointCannonAt(blocks[i].posX(), blocks[i].posY());
+            l.pointCannonAt(blocks[i]);
             blocks.erase(blocks.begin() + i);
             break;
         }

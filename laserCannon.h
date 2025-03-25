@@ -11,7 +11,7 @@ class laserCannon{
 
     public:
         laserCannon(int posX, int posY);
-        void pointCannonAt(int posX, int posY);
+        void pointCannonAt(QuestionBox& target);
         void drawCannon(TDT4102::AnimationWindow& window);
         void setPostion(int posX, int posY);
 };
