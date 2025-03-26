@@ -42,8 +42,8 @@ void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& ge
         blocks.push_back(newBlock);
     }
 
-    for(auto block : blocks){
-        block.moveDown(window);
+    for(auto it = blocks.begin(); it != blocks.end(); it++){
+        (*it).moveDown(window);
     }
 
     if (!blocks.empty() && blocks.front().posY() > 500){
