@@ -7,7 +7,7 @@
 #include <string>
 
 int QuestionBox::posY(){
-    return this->xPosition;
+    return this->yPosition;
 }
 
 int QuestionBox::posX(){
