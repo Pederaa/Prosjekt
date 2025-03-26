@@ -1,5 +1,5 @@
 #pragma once
-#include "animationWindow.h"
+#include "AnimationWindow.h"
 
 class QuestionBox{
     int yPosition = 0;
@@ -11,6 +11,8 @@ class QuestionBox{
     TDT4102::Color fillColor = TDT4102::Color::light_sea_green;
     TDT4102::Color textColor = TDT4102::Color::black;
     TDT4102::Font textFont = TDT4102::Font::times_bold;
+    TDT4102::Point topLeftCorner {0, 0};
+    //TDT4102::Image image = TDT4102::Image("images\bomb-pixilart.png");
 
     std::string question;
     std::string answer;

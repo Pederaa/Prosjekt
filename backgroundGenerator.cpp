@@ -7,5 +7,5 @@ void drawBackground(TDT4102::AnimationWindow& window){
     //window.draw_rectangle({0, window.height()-100}, window.width(), 100, grassColor);
 
     TDT4102::Point topLeftCorner {0, 0};
-    window.draw_image(topLeftCorner, image, window.width(), window.height());
+    window.draw_image(topLeftCorner, image, window.width()-500, window.height()-500);
 }

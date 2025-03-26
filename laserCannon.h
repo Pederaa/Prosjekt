@@ -7,8 +7,6 @@ class laserCannon{
     TDT4102::Color Color = TDT4102::Color::black;
     int length = 100;
 
-    float rotation = 3.14/2;
-
     public:
         laserCannon(int posX, int posY);
         void pointCannonAt(QuestionBox& target);

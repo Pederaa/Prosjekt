@@ -7,13 +7,15 @@
 #include "typingScreen.h"
 #include "eggsManager.h"
 #include "laserCannon.h"
+#include <bits/stdc++.h>
 
 #include <random>
-std::vector<QuestionBox> blocks;
+
+std::list<QuestionBox> blocks;
 laserCannon l(1,2);
 
 void runGame(){
-    TDT4102::AnimationWindow window; //Lager en instanse av et animasjonsvindu.
+    TDT4102::AnimationWindow window(0, 0, 1000, 500, "Laserturtle"); //Lager en instanse av et animasjonsvindu.
     default_random_engine generator;
     std::string c = "";
 
@@ -22,14 +24,10 @@ void runGame(){
     l.setPostion(window.width()/2, window.height()-300);
     
     while(!window.should_close()){
-        l.drawCannon(window);
-        getCharInput(window, c);
         drawBackground(window);
-        getCharInput(window, c);
+        l.drawCannon(window);
         drawBlocks(window, generator, lanes);
-        getCharInput(window, c);
         drawEggs(window);
-        getCharInput(window, c);
         drawTypingScreen(window, c);
         getCharInput(window, c);
         window.next_frame();
@@ -44,14 +42,12 @@ void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& ge
         blocks.push_back(newBlock);
     }
 
-    for(int i=0; i<blocks.size(); i++){
-        blocks.at(i).moveDown(window);
+    for(auto block : blocks){
+        block.moveDown(window);
     }
 
-    if (!blocks.empty()){
-        if (blocks.at(0).posY() > 500){
-            blocks.erase(blocks.begin());
-        }
+    if (!blocks.empty() && blocks.front().posY() > 500){
+        blocks.pop_front();
     }
 }
 
@@ -63,11 +59,10 @@ void checkIfGuessIsCorrect(std::string guess){
     std::cout << std::endl;
     std::cout << std::endl;
 
-    for (int i=0; i<blocks.size(); i++){
-        if(blocks[i].answerCorrect(guess)){
-            //std::cout << ": True" << endl;;
-            l.pointCannonAt(blocks[i]);
-            blocks.erase(blocks.begin() + i);
+    for (auto it = blocks.begin(); it != blocks.end(); it++){
+        if((*it).answerCorrect(guess)){
+            l.pointCannonAt(*it);
+            blocks.erase(it);
             break;
         }
         else{

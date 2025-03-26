@@ -1,4 +1,4 @@
 #pragma once
-#include "animationWindow.h"
+#include "AnimationWindow.h"
 
 void drawBackground(TDT4102::AnimationWindow& window);

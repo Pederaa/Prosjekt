@@ -3,7 +3,6 @@ class ExplotionList{
 
 };
 
-
 class Explotion{
     int positionX;
     int positionY;
