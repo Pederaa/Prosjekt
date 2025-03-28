@@ -6,7 +6,7 @@
 static std::vector<Egg> eggs;
 void initlizeEggs(int lanes[]){
     for (int i=0; i<sizeof(lanes); i++) {
-        eggs.push_back(Egg(lanes[i]));
+        eggs.push_back(Egg(lanes[i], 500));
     }
 }
 

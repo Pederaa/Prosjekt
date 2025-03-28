@@ -24,11 +24,10 @@ void QuestionBox::moveDown(TDT4102::AnimationWindow& window){
 }
 
 void QuestionBox::drawBoks(TDT4102::AnimationWindow& window){
-    window.draw_rectangle({xPosition, yPosition}, width, height, fillColor);
-    //window.draw_image(topLeftCorner, image, 100, 100);
+    //window.draw_rectangle({xPosition, yPosition}, width, height, fillColor);
+    window.draw_image({xPosition, yPosition}, image, 100, 100);
 
-    window.draw_text({xPosition, yPosition}, question, textColor, 20, textFont);
-    window.draw_text({xPosition + 83, yPosition}, "TM", textColor, 10, textFont);
+    window.draw_text({xPosition+30, yPosition+40}, question, textColor, 20, textFont);
 }
 
 QuestionBox::QuestionBox(int lanes[]){
@@ -36,7 +35,8 @@ QuestionBox::QuestionBox(int lanes[]){
     default_random_engine generator(rd());
     xPosition = lanes[(generator()%sizeof(lanes))] - width/2;
     speed = (generator()%5 + 1 );
+    image = TDT4102::Image("images/bomb-pixilart.png"); 
 
-    question = "Hello there";
-    answer = "AA";
+    question = "1+1";
+    answer = "2";
 }

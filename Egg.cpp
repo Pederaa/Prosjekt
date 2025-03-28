@@ -1,8 +1,9 @@
 #include "Egg.h"
 #include "AnimationWindow.h"
 
-Egg::Egg(int xPos){
+Egg::Egg(int xPos, int yPos){
     positionX = xPos;
+    positionY = yPos;
 }
 
 void Egg::removeHP(){

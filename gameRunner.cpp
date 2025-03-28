@@ -14,14 +14,22 @@
 std::list<QuestionBox> blocks;
 laserCannon l(1,2);
 
+constexpr int WINDOW_WIDTH = 1300;
+constexpr int WINDOW_HEIGH = 600;
+constexpr std::string GAME_NAME = "Laserturtle";
+constexpr int BEGIN_LANES[] = {50, 250, 450, 750, 950, 1150};
+
 void runGame(){
-    TDT4102::AnimationWindow window(0, 0, 1000, 500, "Laserturtle"); //Lager en instanse av et animasjonsvindu.
+    TDT4102::AnimationWindow window(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME); //Lager en instanse av et animasjonsvindu.
     default_random_engine generator;
     std::string c = "";
 
-    int lanes[] = {50, 250, 450, 750, 950, 1150};
+    int n = sizeof(BEGIN_LANES);
+    int lanes[n];
+    copy(BEGIN_LANES, BEGIN_LANES+n, lanes);
+
     initlizeEggs(lanes);
-    l.setPostion(window.width()/2, window.height()-300);
+    l.setPostion(window.width()/2, window.height()-50);
     
     while(!window.should_close()){
         drawBackground(window);
@@ -70,9 +78,6 @@ void checkIfGuessIsCorrect(std::string guess){
             l.pointCannonAt(*it);
             blocks.erase(it);
             break;
-        }
-        else{
-            //std::cout << ": False" << endl;;
         }
     }
 }

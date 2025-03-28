@@ -3,7 +3,7 @@
 #include "typingScreen.h"
 
 void drawTypingScreen(TDT4102::AnimationWindow& window, std::string c){
-    TDT4102::Point posisjon = {window.width()/2 - 100, window.height() - 200};
+    TDT4102::Point posisjon = {window.width()/2 - 100, window.height() - 20};
 
     window.draw_rectangle(posisjon, 200, 50, TDT4102::Color::black);
 
