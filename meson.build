@@ -29,7 +29,6 @@ exe = executable(
   'program',
   src,
 'Bomb.cpp',
-'Egg.cpp',
 'backgroundGenerator.cpp',
 'eggsManager.cpp',
 'explotionManager.cpp',

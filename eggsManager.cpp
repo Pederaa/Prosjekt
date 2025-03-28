@@ -1,7 +1,24 @@
 #include "eggsManager.h"
-#include "Egg.h"
 #include "AnimationWindow.h"
 #include "std_lib_facilities.h"
+
+Egg::Egg(int xPos, int yPos){
+    positionX = xPos;
+    positionY = yPos;
+}
+
+void Egg::removeHP(){
+    hp -= 1;
+}
+
+int Egg::y(){
+    return positionY;
+}
+
+void Egg::drawEgg(TDT4102::AnimationWindow& window){
+    window.draw_rectangle({positionX, positionY}, 10, 20, fillColor);
+}
+
 
 static std::vector<Egg> eggs;
 void initlizeEggs(int lanes[]){
