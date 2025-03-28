@@ -1,7 +1,7 @@
 #pragma once
 #include "AnimationWindow.h"
 
-class QuestionBox{
+class Bomb{
     int yPosition = 0;
     int xPosition = 0;
     int width = 100;
@@ -18,10 +18,10 @@ class QuestionBox{
     std::string answer;
 
     public:
-        QuestionBox(int lanes[]);
+        Bomb(int lanes[]);
         int posX();
         int posY();
         std::string answerCorrect();
         void moveDown(TDT4102::AnimationWindow& window);
-        void drawBoks(TDT4102::AnimationWindow& window);
+        void drawTekstBoks(TDT4102::AnimationWindow& window);
 };

@@ -4,7 +4,7 @@
 void PointCannonAt(int targetX, int targetY){
     int length = 100;
 
-    int basePositionX = 300;
+    int basePositionX = 300; 
     int basePositionY = 500;
 
     float k = length/sqrt(pow(targetX - basePositionX, 2) + pow(targetY - basePositionY, 2));

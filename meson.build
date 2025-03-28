@@ -28,6 +28,7 @@ src = []
 exe = executable(
   'program',
   src,
+'Bomb.cpp',
 'Egg.cpp',
 'backgroundGenerator.cpp',
 'eggsManager.cpp',
@@ -36,8 +37,6 @@ exe = executable(
 'laserCannon.cpp',
 'main.cpp',
 'mainPage.cpp',
-'numQuestion.cpp',
-'questionBoxClass.cpp',
 'readKeyInput.cpp',
 'typingScreen.cpp',
   dependencies : [animationwindow_dep, sdl2_dep, std_lib_facilities_dep],

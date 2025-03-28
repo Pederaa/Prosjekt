@@ -1,5 +1,5 @@
 #pragma once
-#include "questionBoxClass.h"
+#include "Bomb.h"
 
 class laserCannon{
     TDT4102::Point basePosition;
@@ -9,7 +9,7 @@ class laserCannon{
 
     public:
         laserCannon(int posX, int posY);
-        void pointCannonAt(QuestionBox& target);
+        void pointCannonAt(Bomb& target);
         void drawCannon(TDT4102::AnimationWindow& window);
         void setPostion(int posX, int posY);
 };
