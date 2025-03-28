@@ -14,8 +14,8 @@ int QuestionBox::posX(){
     return this->xPosition;
 }
 
-bool QuestionBox::answerCorrect(std::string guess){
-    return guess == answer;
+std::string QuestionBox::answerCorrect(){
+    return answer;
 }
 
 void QuestionBox::moveDown(TDT4102::AnimationWindow& window){

@@ -21,7 +21,7 @@ class QuestionBox{
         QuestionBox(int lanes[]);
         int posX();
         int posY();
-        bool answerCorrect(std::string answer);
+        string answerCorrect();
         void moveDown(TDT4102::AnimationWindow& window);
         void drawBoks(TDT4102::AnimationWindow& window);
 };

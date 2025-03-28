@@ -66,7 +66,7 @@ void checkIfGuessIsCorrect(std::string guess){
     std::cout << std::endl;
 
     for (auto it = blocks.begin(); it != blocks.end(); it++){
-        if((*it).answerCorrect(guess)){
+        if(guess == (*it).answerCorrect()){
             l.pointCannonAt(*it);
             blocks.erase(it);
             break;
