@@ -37,17 +37,23 @@ void runGame(){
 }
 
 void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, int lanes[]){
-    if (generator()%40 == 1){ // Legger til nye blokker ca. hver 10. frame.  
+    if (generator()%40 == 1){ // Legger til nye blokker ca. hver 40. frame.  
         QuestionBox newBlock = QuestionBox(lanes);
         blocks.push_back(newBlock);
     }
 
-    for(auto it = blocks.begin(); it != blocks.end(); it++){
+    /*Her itererer vi over alle blokkelementene. Vi flytter alle et hakk ned 
+    og sletter de som har kommet for langt. Her må vi bruke en while-løkke. 
+    Mer info: https://www.geeksforgeeks.org/cpp-remove-elements-from-a-list-while-iterating/
+    */
+    list<QuestionBox>::iterator it = blocks.begin();
+    while (it != blocks.end()){
         (*it).moveDown(window);
-    }
-
-    if (!blocks.empty() && blocks.front().posY() > 500){
-        blocks.pop_front();
+        if ((*it).posY() >= getHeightOfeggs()){
+            it = blocks.erase(it);
+            continue;
+        }
+        it++;
     }
 }
 

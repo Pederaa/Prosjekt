@@ -10,6 +10,10 @@ void Egg::removeHP(){
 
 }
 
+int Egg::y(){
+    return positionY;
+}
+
 void Egg::drawEgg(TDT4102::AnimationWindow& window){
     window.draw_rectangle({positionX, positionY}, 10, 20, fillColor);
 }

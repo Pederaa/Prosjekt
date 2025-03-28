@@ -15,3 +15,7 @@ void drawEggs(TDT4102::AnimationWindow& window){
         egg.drawEgg(window);
     }
 }
+
+int getHeightOfeggs(){
+    return eggs.front().y();
+}

@@ -11,5 +11,6 @@ class Egg{
         Egg();
         Egg(int xPos);
         void removeHP();
+        int y();
         void drawEgg(TDT4102::AnimationWindow& window);
 };

@@ -31,10 +31,6 @@ void QuestionBox::drawBoks(TDT4102::AnimationWindow& window){
     window.draw_text({xPosition + 83, yPosition}, "TM", textColor, 10, textFont);
 }
 
-void QuestionBox::deleteBlock(){
-    // SKal slette blokka
-}
-
 QuestionBox::QuestionBox(int lanes[]){
     random_device rd;
     default_random_engine generator(rd());
