@@ -8,10 +8,12 @@
 #include "eggsManager.h"
 #include "laserCannon.h"
 #include <bits/stdc++.h>
+#include "explotionManager.h"
 
 #include <random>
 
 std::list<Bomb> blocks;
+std::list<Explotion> explotions;
 laserCannon l(1,2);
 
 constexpr int WINDOW_WIDTH = 1300; //Bildene skal dimasnjoneres slik at 1 bildepiksel er 2*2 spillpiksler. 
@@ -36,6 +38,7 @@ void runGame(){
         l.drawCannon(window);
         drawBlocks(window, generator, lanes);
         drawEggs(window);
+        drawExplotions(window);
         drawTypingScreen(window, c);
         getCharInput(window, c);
         window.next_frame();
@@ -70,14 +73,17 @@ void checkIfGuessIsCorrect(std::string guess){
         return;
     }
 
-    std::cout << std::endl;
-    std::cout << std::endl;
-
     for (auto it = blocks.begin(); it != blocks.end(); it++){
         if(guess == (*it).answerCorrect()){
             l.pointCannonAt(*it);
             blocks.erase(it);
             break;
         }
+    }
+}
+
+void drawExplotions(TDT4102::AnimationWindow& window){
+    for (auto it = explotions.begin(); it != explotions.end(); it++){
+        (*it).drawExplotion(window);
     }
 }
