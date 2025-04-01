@@ -44,3 +44,18 @@ void laserCannon::drawCannon(TDT4102::AnimationWindow& window){
 void laserCannon::setPostion(int posX, int posY){
     basePosition = {posX, posY};
 }
+
+Laser::Laser(laserCannon cannon, Bomb bomb){
+    basePosition = cannon.basePosition;
+    endPosition = {bomb.posX(), bomb.posY()};
+}
+
+bool Laser::drawLaser(TDT4102::AnimationWindow& window){
+    if (frameIndex >= maxIndex){
+        return false;
+    }
+
+    window.draw_line(basePosition, endPosition, Color);
+    frameIndex++;
+    return true;
+}

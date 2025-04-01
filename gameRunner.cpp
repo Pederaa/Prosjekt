@@ -14,6 +14,7 @@
 
 std::list<Bomb> blocks;
 std::list<Explotion> explotions;
+std::list<Laser> lasers;
 laserCannon l(1,2);
 
 constexpr int WINDOW_WIDTH = 1300; //Bildene skal dimasnjoneres slik at 1 bildepiksel er 2*2 spillpiksler. 
@@ -39,8 +40,10 @@ void runGame(){
         drawBlocks(window, generator, lanes);
         drawEggs(window);
         drawExplotions(window);
+        drawLasers(window);
         drawTypingScreen(window, c);
         getCharInput(window, c);
+
         window.next_frame();
     }
 
@@ -61,6 +64,7 @@ void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& ge
     while (it != blocks.end()){
         (*it).moveDown(window);
         if ((*it).posY() >= getHeightOfeggs()){
+            explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             it = blocks.erase(it);
             continue;
         }
@@ -73,10 +77,12 @@ void checkIfGuessIsCorrect(std::string guess){
         return;
     }
 
+    // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne ren som passer
     for (auto it = blocks.begin(); it != blocks.end(); it++){
         if(guess == (*it).answerCorrect()){
             l.pointCannonAt(*it);
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
+            lasers.push_back(Laser(l, (*it)));
             blocks.erase(it);
             break;
         }
@@ -84,11 +90,23 @@ void checkIfGuessIsCorrect(std::string guess){
 }
 
 void drawExplotions(TDT4102::AnimationWindow& window){
-    auto it = explotions.begin();
+    list<Explotion>::iterator it = explotions.begin();
     while (it != explotions.end()){
         bool isExplotionDone = (*it).drawExplotion(window);
         if (isExplotionDone){
             it = explotions.erase(it);
+            continue;
+        }
+        it++;
+    }
+}
+
+void drawLasers(TDT4102::AnimationWindow& window){
+    list<Laser>::iterator it = lasers.begin();
+    while (it != lasers.end()){
+        bool isLaserDone = (*it).drawLaser(window);
+        if (isLaserDone){
+            it = lasers.erase(it);
             continue;
         }
         it++;

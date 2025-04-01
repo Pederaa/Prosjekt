@@ -4,8 +4,6 @@
 Explotion::Explotion(int posX, int posY){
     positionX = posX;
     positionY = posY;
-
-    frame1 =  TDT4102::Image("images/explotion.png");
 }
 
 bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
