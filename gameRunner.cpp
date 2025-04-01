@@ -76,6 +76,7 @@ void checkIfGuessIsCorrect(std::string guess){
     for (auto it = blocks.begin(); it != blocks.end(); it++){
         if(guess == (*it).answerCorrect()){
             l.pointCannonAt(*it);
+            explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             blocks.erase(it);
             break;
         }
@@ -83,7 +84,13 @@ void checkIfGuessIsCorrect(std::string guess){
 }
 
 void drawExplotions(TDT4102::AnimationWindow& window){
-    for (auto it = explotions.begin(); it != explotions.end(); it++){
-        (*it).drawExplotion(window);
+    auto it = explotions.begin();
+    while (it != explotions.end()){
+        bool isExplotionDone = (*it).drawExplotion(window);
+        if (isExplotionDone){
+            it = explotions.erase(it);
+            continue;
+        }
+        it++;
     }
 }

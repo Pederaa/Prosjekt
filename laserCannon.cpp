@@ -33,8 +33,8 @@ void laserCannon::pointCannonAt(Bomb& bomb){
     }
     endPosition.y = basePosition.y - length/(sqrt(1 + pow((bomb.posY() - basePosition.y)/(bomb.posX() - basePosition.x), 2)));
     
-    cout << "{" << bomb.posX() << ", " << bomb.posY() << "}" << endl;
-    cout << "{" << endPosition.x << ", " << endPosition.y << ", 100=" << sqrt(pow(endPosition.x - basePosition.x, 2) + pow(endPosition.y - basePosition.y, 2)) << "}" << endl << endl << endl << endl;
+    //cout << "{" << bomb.posX() << ", " << bomb.posY() << "}" << endl;
+    //cout << "{" << endPosition.x << ", " << endPosition.y << ", 100=" << sqrt(pow(endPosition.x - basePosition.x, 2) + pow(endPosition.y - basePosition.y, 2)) << "}" << endl << endl << endl << endl;
 }
 
 void laserCannon::drawCannon(TDT4102::AnimationWindow& window){ 
