@@ -52,10 +52,10 @@ Laser::Laser(laserCannon cannon, Bomb bomb){
 
 bool Laser::drawLaser(TDT4102::AnimationWindow& window){
     if (frameIndex >= maxIndex){
-        return false;
+        return true;
     }
 
     window.draw_line(basePosition, endPosition, Color);
     frameIndex++;
-    return true;
+    return false;
 }

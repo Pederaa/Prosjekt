@@ -8,10 +8,10 @@ Explotion::Explotion(int posX, int posY){
 
 bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
     if (frameIndex >= maxIndex){
-        return false;
+        return true;
     }
 
     window.draw_image({positionX, positionY}, frame1, 100, 100);
     frameIndex++;
-    return true;
+    return false;
 }

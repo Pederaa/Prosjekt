@@ -19,8 +19,8 @@ class Laser{
     TDT4102::Point basePosition;
     TDT4102::Point endPosition;
     TDT4102::Color Color = TDT4102::Color::red;
-    int frameIndex;
-    int maxIndex = 15;
+    int frameIndex = 0;
+    int maxIndex = 10;
 
     public:
         Laser(laserCannon cannon, Bomb bomb);

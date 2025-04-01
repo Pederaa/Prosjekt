@@ -93,6 +93,7 @@ void drawExplotions(TDT4102::AnimationWindow& window){
     list<Explotion>::iterator it = explotions.begin();
     while (it != explotions.end()){
         bool isExplotionDone = (*it).drawExplotion(window);
+        
         if (isExplotionDone){
             it = explotions.erase(it);
             continue;
