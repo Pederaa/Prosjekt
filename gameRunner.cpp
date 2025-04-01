@@ -32,15 +32,15 @@ void runGame(){
     copy(BEGIN_LANES, BEGIN_LANES+n, lanes);
 
     initlizeEggs(lanes);
-    l.setPostion(window.width()/2, window.height()-50);
+    l.setBaseposition(window.width()/2, window.height()-100);
     
     while(!window.should_close()){
         drawBackground(window);
         l.drawCannon(window);
         drawBlocks(window, generator, lanes);
         drawEggs(window);
-        drawExplotions(window);
         drawLasers(window);
+        drawExplotions(window);
         drawTypingScreen(window, c);
         getCharInput(window, c);
 
@@ -93,7 +93,7 @@ void drawExplotions(TDT4102::AnimationWindow& window){
     list<Explotion>::iterator it = explotions.begin();
     while (it != explotions.end()){
         bool isExplotionDone = (*it).drawExplotion(window);
-        
+
         if (isExplotionDone){
             it = explotions.erase(it);
             continue;

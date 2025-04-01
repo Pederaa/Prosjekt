@@ -34,7 +34,7 @@ Bomb::Bomb(int lanes[]){
     random_device rd;
     default_random_engine generator(rd());
     xPosition = lanes[(generator()%sizeof(lanes))] - width/2;
-    speed = (generator()%5 + 1 );
+    speed = (generator()%2 + 2 );
     image = TDT4102::Image("images/bomb2.png"); 
 
     question = "1+1";

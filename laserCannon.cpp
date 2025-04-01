@@ -41,13 +41,13 @@ void laserCannon::drawCannon(TDT4102::AnimationWindow& window){
     window.draw_line(basePosition, endPosition, Color);
 }
 
-void laserCannon::setPostion(int posX, int posY){
-    basePosition = {posX, posY};
+void laserCannon::setBaseposition(int x, int y){
+    endPosition = {x, y};
 }
 
 Laser::Laser(laserCannon cannon, Bomb bomb){
     basePosition = cannon.basePosition;
-    endPosition = {bomb.posX(), bomb.posY()};
+    endPosition = {bomb.posX()+50, bomb.posY()+50};
 }
 
 bool Laser::drawLaser(TDT4102::AnimationWindow& window){
