@@ -42,7 +42,7 @@ void laserCannon::drawCannon(TDT4102::AnimationWindow& window){
 }
 
 void laserCannon::setBaseposition(int x, int y){
-    endPosition = {x, y};
+    basePosition = {x, y};
 }
 
 Laser::Laser(laserCannon cannon, Bomb bomb){
