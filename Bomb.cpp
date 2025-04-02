@@ -14,7 +14,7 @@ int Bomb::posX(){
     return this->xPosition;
 }
 
-std::string Bomb::answerCorrect(){
+std::string Bomb::Answer(){
     return answer;
 }
 

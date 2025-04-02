@@ -21,7 +21,7 @@ class Bomb{
         Bomb(int lanes[]);
         int posX();
         int posY();
-        std::string answerCorrect();
+        std::string Answer();
         void moveDown(TDT4102::AnimationWindow& window);
         void drawTekstBoks(TDT4102::AnimationWindow& window);
 };

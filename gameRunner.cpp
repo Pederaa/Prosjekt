@@ -63,7 +63,7 @@ void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& ge
     list<Bomb>::iterator it = blocks.begin();
     while (it != blocks.end()){
         (*it).moveDown(window);
-        if ((*it).posY() >= getHeightOfeggs()){
+        if ((*it).posY() >= getHeightOfeggs() - 100){
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             it = blocks.erase(it);
             continue;
@@ -79,7 +79,7 @@ void checkIfGuessIsCorrect(std::string guess){
 
     // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne ren som passer
     for (auto it = blocks.begin(); it != blocks.end(); it++){
-        if(guess == (*it).answerCorrect()){
+        if(guess == (*it).Answer()){
             l.pointCannonAt(*it);
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             lasers.push_back(Laser(l, (*it)));
