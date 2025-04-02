@@ -30,7 +30,7 @@ void Bomb::drawTekstBoks(TDT4102::AnimationWindow& window){
     window.draw_text({xPosition+30, yPosition+40}, question, textColor, 20, textFont);
 }
 
-Bomb::Bomb(int lanes[]){
+Bomb::Bomb(std::vector<int> lanes){
     random_device rd;
     default_random_engine generator(rd());
     xPosition = lanes[(generator()%sizeof(lanes))] - width/2;

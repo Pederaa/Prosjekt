@@ -1,4 +1,5 @@
 #include "eggsManager.h"
+#include "gameRunner.h"
 #include "AnimationWindow.h"
 #include "std_lib_facilities.h"
 
@@ -39,20 +40,20 @@ void Egg::drawEgg(TDT4102::AnimationWindow& window){
             break;
 
         case 0:
+            removeLineAtX(x);
             break;
     }
 }
 
 
 static std::vector<Egg> eggs;
-void initlizeEggs(int lanes[]){
+void initlizeEggs(std::vector<int> lanes){
     for (int i=0; i<sizeof(lanes); i++) {
         eggs.push_back(Egg(lanes[i], 500));
     }
 }
 
 void drawEggs(TDT4102::AnimationWindow& window){
-
     auto it = eggs.begin();
     while (it != eggs.end()){
         (*it).drawEgg(window);

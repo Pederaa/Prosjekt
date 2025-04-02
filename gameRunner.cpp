@@ -22,14 +22,14 @@ constexpr int WINDOW_HEIGH = 600;
 constexpr std::string GAME_NAME = "Laserturtle";
 constexpr int BEGIN_LANES[] = {50, 250, 450, 750, 950, 1150};
 constexpr int n = sizeof(BEGIN_LANES)/sizeof(BEGIN_LANES[0]);
-int lanes[n];
+vector<int> lanes;
 
 void runGame(){
     TDT4102::AnimationWindow window(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME); //Lager en instanse av et animasjonsvindu.
     default_random_engine generator;
     std::string c = "";
 
-    copy(BEGIN_LANES, BEGIN_LANES+n, lanes);
+    copy(&BEGIN_LANES[0], &BEGIN_LANES[n], back_inserter(lanes));
 
     initlizeEggs(lanes);
     l.setBaseposition(window.width()/2, window.height()-100);
@@ -50,7 +50,7 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
-void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, int lanes[]){
+void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, vector<int> lanes){
     if (generator()%40 == 1){ // Legger til nye blokker ca. hver 40. frame.  
         Bomb newBlock = Bomb(lanes);
         blocks.push_back(newBlock);
@@ -113,4 +113,26 @@ void drawLasers(TDT4102::AnimationWindow& window){
         }
         it++;
     }
+}
+
+void removeLineAtX(int x){
+    for (int i = 0; i < lanes.size(); i++){
+        if(lanes.at(i) == x){
+            lanes.erase(lanes.begin() + i);
+            break;
+        }
+    }
+
+    auto it = blocks.begin();
+    while (it != blocks.end()){
+        if ((*it).posX() == x){
+            explotions.push_back(Explotion((*it).posX(), (*it).posY()));
+            blocks.erase(it);
+
+            continue;
+        }
+
+        it++;
+    }
+    
 }

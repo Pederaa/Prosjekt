@@ -16,7 +16,7 @@ class Egg{
         void drawEgg(TDT4102::AnimationWindow& window);
 };
 
-void initlizeEggs(int lanes[]);
+void initlizeEggs(std::vector<int> lanes);
 void drawEggs(TDT4102::AnimationWindow& window);
 int getHeightOfeggs();
 void damageEggAtXPosition(int x);

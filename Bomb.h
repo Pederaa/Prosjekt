@@ -18,7 +18,7 @@ class Bomb{
     std::string answer;
 
     public:
-        Bomb(int lanes[]);
+        Bomb(std::vector<int> lanes);
         int posX();
         int posY();
         std::string Answer();
