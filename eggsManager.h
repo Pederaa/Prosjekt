@@ -7,7 +7,7 @@ class Egg{
     TDT4102::Color fillColor = TDT4102::Color::red;
 
     public:
-        int hp;
+        int hp = 3;
         Egg();
         Egg(int xPos, int yPos);
         void removeHP();
@@ -20,3 +20,4 @@ void initlizeEggs(std::vector<int> lanes);
 void drawEggs(TDT4102::AnimationWindow& window);
 int getHeightOfeggs();
 void damageEggAtXPosition(int x);
+void eraseEgg(int x);

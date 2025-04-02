@@ -6,8 +6,6 @@
 Egg::Egg(int xPos, int yPos){
     x = xPos;
     y = yPos;
-
-    hp = 3;
 }
 
 void Egg::removeHP(){
@@ -48,12 +46,13 @@ void Egg::drawEgg(TDT4102::AnimationWindow& window){
 
 static std::vector<Egg> eggs;
 void initlizeEggs(std::vector<int> lanes){
-    for (int i=0; i<sizeof(lanes); i++) {
+    for (int i=0; i<lanes.size(); i++) {
         eggs.push_back(Egg(lanes[i], 500));
     }
 }
 
 void drawEggs(TDT4102::AnimationWindow& window){
+    //cout << "Antall egg: " << eggs.size() << endl;
     auto it = eggs.begin();
     while (it != eggs.end()){
         (*it).drawEgg(window);
@@ -73,5 +72,15 @@ void damageEggAtXPosition(int x){
             break;
         }
         it++;
+    }
+}
+
+void eraseEgg(int x){
+    cout << "Slett egg" << endl;
+    for (int i = 0; i < eggs.size(); i++){
+        if(eggs.at(i).posX() == x - 50){
+            eggs.erase(eggs.begin() + i);
+            return;
+        }
     }
 }

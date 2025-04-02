@@ -125,14 +125,12 @@ void removeLineAtX(int x){
 
     auto it = blocks.begin();
     while (it != blocks.end()){
-        if ((*it).posX() == x){
+        if ((*it).posX() == x - 50){
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
-            blocks.erase(it);
-
+            eraseEgg((*it).posX());
+            it = blocks.erase(it);
             continue;
         }
-
         it++;
     }
-    
 }
