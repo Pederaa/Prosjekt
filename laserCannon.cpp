@@ -9,8 +9,8 @@ laserCannon::laserCannon(int posX, int posY){
 }
 
 void laserCannon::pointCannonAt(int targetX, int targetY){
-    endPosition.x = basePosition.x - length*((basePosition.x - targetX))/sqrt(pow(basePosition.x - targetX, 2) + pow(basePosition.y - targetY, 2));
-    endPosition.y = basePosition.y - length*((basePosition.y - targetY))/sqrt(pow(basePosition.x - targetX, 2) + pow(basePosition.y - targetY, 2));
+    endPosition.x = basePosition.x - length*((basePosition.x - targetX-50))/sqrt(pow(basePosition.x - targetX-50, 2) + pow(basePosition.y - targetY-50, 2));
+    endPosition.y = basePosition.y - length*((basePosition.y - targetY-50))/sqrt(pow(basePosition.x - targetX-50, 2) + pow(basePosition.y - targetY-50, 2));
 }
 
 void laserCannon::drawCannon(TDT4102::AnimationWindow& window){ 

@@ -9,7 +9,6 @@
 #include "laserCannon.h"
 #include <bits/stdc++.h>
 #include "explotionManager.h"
-
 #include <random>
 
 std::list<Bomb> blocks;
@@ -33,14 +32,15 @@ void runGame(){
 
     initlizeEggs(lanes);
     l.setBaseposition(window.width()/2, window.height()-100);
-    l.pointCannonAt(window.width()/2+1, (window.height()-100-l.Length()));
+    l.pointCannonAt(window.width()/2, (window.height()-100-l.Length()));
 
     while(!window.should_close()){
+        addNewBlocks(generator, lanes);
         drawBackground(window);
-        l.drawCannon(window);
-        drawBlocks(window, generator, lanes);
+        drawBlocks(window);
         drawEggs(window);
         drawLasers(window);
+        l.drawCannon(window);
         drawExplotions(window);
         drawTypingScreen(window, c);
         getCharInput(window, c);
@@ -51,12 +51,14 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
-void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& generator, vector<int> lanes){
+void addNewBlocks( std::default_random_engine& generator, vector<int> lanes){
     if (generator()%40 == 1){ // Legger til nye blokker ca. hver 40. frame.  
         Bomb newBlock = Bomb(lanes);
         blocks.push_back(newBlock);
     }
+}
 
+void drawBlocks(TDT4102::AnimationWindow& window){
     /*Her itererer vi over alle blokkelementene. Vi flytter alle et hakk ned 
     og sletter de som har kommet for langt. Her må vi bruke en while-løkke. 
     Mer info: https://www.geeksforgeeks.org/cpp-remove-elements-from-a-list-while-iterating/
@@ -79,7 +81,7 @@ void checkIfGuessIsCorrect(std::string guess){
         return;
     }
 
-    // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne ren som passer
+    // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne den som passer
     for (auto it = blocks.begin(); it != blocks.end(); it++){
         if(guess == (*it).Answer()){
             l.pointCannonAt((*it).posX(), (*it).posY());
