@@ -76,7 +76,7 @@ void damageEggAtXPosition(int x){
 }
 
 void eraseEgg(int x){
-    cout << "Slett egg" << endl;
+    //cout << "Slett egg" << endl;
     for (int i = 0; i < eggs.size(); i++){
         if(eggs.at(i).posX() == x - 50){
             eggs.erase(eggs.begin() + i);

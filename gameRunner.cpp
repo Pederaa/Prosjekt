@@ -33,7 +33,8 @@ void runGame(){
 
     initlizeEggs(lanes);
     l.setBaseposition(window.width()/2, window.height()-100);
-    
+    l.pointCannonAt(window.width()/2+1, (window.height()-100-l.Length()));
+
     while(!window.should_close()){
         drawBackground(window);
         l.drawCannon(window);
@@ -81,7 +82,7 @@ void checkIfGuessIsCorrect(std::string guess){
     // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne ren som passer
     for (auto it = blocks.begin(); it != blocks.end(); it++){
         if(guess == (*it).Answer()){
-            l.pointCannonAt(*it);
+            l.pointCannonAt((*it).posX(), (*it).posY());
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             lasers.push_back(Laser(l, (*it)));
             blocks.erase(it);

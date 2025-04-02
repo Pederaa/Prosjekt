@@ -8,33 +8,9 @@ laserCannon::laserCannon(int posX, int posY){
     basePosition = {posX, posY};
 }
 
-void laserCannon::pointCannonAt(Bomb& bomb){
-    /*float k = sqrt(pow(length,2)/(pow(bomb.posX() - basePosition.x, 2) + pow(target.posY() - basePosition.y, 2)));
-
-    float tempX;
-    if (basePosition.x <= bomb.posX()){
-        tempX = basePosition.x + k*(bomb.posX() - basePosition.x);
-    } else{
-        tempX = basePosition.x - k*(bomb.posX() - basePosition.x);
-    }
-
-    float tempY = basePosition.y - k*(basePosition.y - bomb.posY());
-    endPosition = {static_cast<int>(std::round(tempX)), static_cast<int>(std::round(tempY))};
-
-    cout << "{" << tempX << ", " << tempY << "}" << endl;
-    cout << "{" << endPosition.x << ", " << endPosition.y << ", 100=" << sqrt(pow(endPosition.x - basePosition.x, 2) + pow(endPosition.y - endPosition.y, 2)) << "}" << endl << endl << endl << endl;
-    */
-    
-    if (basePosition.x <= bomb.posX()){
-        endPosition.x = basePosition.x + length/(sqrt(1 + pow((bomb.posX() - basePosition.x)/(bomb.posY() - basePosition.y), 2)));
-    }
-    else{
-        endPosition.x = basePosition.x - length/(sqrt(1 + pow((bomb.posX() - basePosition.x)/(bomb.posY() - basePosition.y), 2)));
-    }
-    endPosition.y = basePosition.y - length/(sqrt(1 + pow((bomb.posY() - basePosition.y)/(bomb.posX() - basePosition.x), 2)));
-    
-    //cout << "{" << bomb.posX() << ", " << bomb.posY() << "}" << endl;
-    //cout << "{" << endPosition.x << ", " << endPosition.y << ", 100=" << sqrt(pow(endPosition.x - basePosition.x, 2) + pow(endPosition.y - basePosition.y, 2)) << "}" << endl << endl << endl << endl;
+void laserCannon::pointCannonAt(int targetX, int targetY){
+    endPosition.x = basePosition.x - length*((basePosition.x - targetX))/sqrt(pow(basePosition.x - targetX, 2) + pow(basePosition.y - targetY, 2));
+    endPosition.y = basePosition.y - length*((basePosition.y - targetY))/sqrt(pow(basePosition.x - targetX, 2) + pow(basePosition.y - targetY, 2));
 }
 
 void laserCannon::drawCannon(TDT4102::AnimationWindow& window){ 
@@ -43,6 +19,10 @@ void laserCannon::drawCannon(TDT4102::AnimationWindow& window){
 
 void laserCannon::setBaseposition(int x, int y){
     basePosition = {x, y};
+}
+
+int laserCannon::Length(){
+    return length;
 }
 
 Laser::Laser(laserCannon cannon, Bomb bomb){
