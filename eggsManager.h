@@ -2,12 +2,12 @@
 #include "AnimationWindow.h"
 
 class Egg{
-    int hp = 3;
     int y = 0;
     int x = 0;
     TDT4102::Color fillColor = TDT4102::Color::red;
 
     public:
+        int hp;
         Egg();
         Egg(int xPos, int yPos);
         void removeHP();
@@ -15,7 +15,6 @@ class Egg{
         int posX();
         void drawEgg(TDT4102::AnimationWindow& window);
 };
-
 
 void initlizeEggs(int lanes[]);
 void drawEggs(TDT4102::AnimationWindow& window);

@@ -21,14 +21,14 @@ constexpr int WINDOW_WIDTH = 1300; //Bildene skal dimasnjoneres slik at 1 bildep
 constexpr int WINDOW_HEIGH = 600;
 constexpr std::string GAME_NAME = "Laserturtle";
 constexpr int BEGIN_LANES[] = {50, 250, 450, 750, 950, 1150};
+constexpr int n = sizeof(BEGIN_LANES)/sizeof(BEGIN_LANES[0]);
+int lanes[n];
 
 void runGame(){
     TDT4102::AnimationWindow window(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME); //Lager en instanse av et animasjonsvindu.
     default_random_engine generator;
     std::string c = "";
 
-    int n = sizeof(BEGIN_LANES);
-    int lanes[n];
     copy(BEGIN_LANES, BEGIN_LANES+n, lanes);
 
     initlizeEggs(lanes);

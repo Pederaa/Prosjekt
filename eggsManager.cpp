@@ -5,10 +5,12 @@
 Egg::Egg(int xPos, int yPos){
     x = xPos;
     y = yPos;
+
+    hp = 3;
 }
 
 void Egg::removeHP(){
-    hp -= 1;
+    hp--;
 }
 
 int Egg::posY(){
@@ -20,7 +22,25 @@ int Egg::posX(){
 }
 
 void Egg::drawEgg(TDT4102::AnimationWindow& window){
-    window.draw_rectangle({x, y}, 10, 20, fillColor);
+    switch(hp){
+        case 3:
+            window.draw_rectangle({x-10-5, y}, 10, 20, fillColor);
+            window.draw_rectangle({x, y}, 10, 20, fillColor);
+            window.draw_rectangle({x+10+5, y}, 10, 20, fillColor);
+            break;
+
+        case 2:
+            window.draw_rectangle({x-10-2, y}, 10, 20, fillColor);
+            window.draw_rectangle({x+3, y}, 10, 20, fillColor);
+            break;
+
+        case 1:
+            window.draw_rectangle({x, y}, 10, 20, fillColor);
+            break;
+
+        case 0:
+            break;
+    }
 }
 
 
@@ -32,8 +52,11 @@ void initlizeEggs(int lanes[]){
 }
 
 void drawEggs(TDT4102::AnimationWindow& window){
-    for (Egg egg : eggs){
-        egg.drawEgg(window);
+
+    auto it = eggs.begin();
+    while (it != eggs.end()){
+        (*it).drawEgg(window);
+        it++;
     }
 }
 
@@ -42,9 +65,12 @@ int getHeightOfeggs(){
 }
 
 void damageEggAtXPosition(int x){
-    for (Egg egg : eggs){
-        if (egg.posX() == x){
-            egg.removeHP();
+    auto it = eggs.begin();
+    while (it != eggs.end()){
+        if ((*it).posX() == x + 50){
+            (*it).removeHP();
+            break;
         }
+        it++;
     }
 }
