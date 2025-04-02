@@ -2,8 +2,8 @@
 #include "std_lib_facilities.h"
 
 Explotion::Explotion(int posX, int posY){
-    positionX = posX;
-    positionY = posY;
+    x = posX;
+    y = posY;
 }
 
 bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
@@ -11,7 +11,7 @@ bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
         return true;
     }
 
-    window.draw_image({positionX, positionY}, frame1, 100, 100);
+    window.draw_image({x, y}, frame1, 100, 100);
     frameIndex++;
     return false;
 }

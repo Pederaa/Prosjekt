@@ -65,6 +65,7 @@ void drawBlocks(TDT4102::AnimationWindow& window, std::default_random_engine& ge
         (*it).moveDown(window);
         if ((*it).posY() >= getHeightOfeggs() - 100){
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
+            damageEggAtXPosition((*it).posX());
             it = blocks.erase(it);
             continue;
         }

@@ -3,20 +3,24 @@
 #include "std_lib_facilities.h"
 
 Egg::Egg(int xPos, int yPos){
-    positionX = xPos;
-    positionY = yPos;
+    x = xPos;
+    y = yPos;
 }
 
 void Egg::removeHP(){
     hp -= 1;
 }
 
-int Egg::y(){
-    return positionY;
+int Egg::posY(){
+    return y;
+}
+
+int Egg::posX(){
+    return x;
 }
 
 void Egg::drawEgg(TDT4102::AnimationWindow& window){
-    window.draw_rectangle({positionX, positionY}, 10, 20, fillColor);
+    window.draw_rectangle({x, y}, 10, 20, fillColor);
 }
 
 
@@ -34,5 +38,13 @@ void drawEggs(TDT4102::AnimationWindow& window){
 }
 
 int getHeightOfeggs(){
-    return eggs.front().y();
+    return eggs.front().posY();
+}
+
+void damageEggAtXPosition(int x){
+    for (Egg egg : eggs){
+        if (egg.posX() == x){
+            egg.removeHP();
+        }
+    }
 }

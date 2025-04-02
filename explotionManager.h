@@ -6,8 +6,8 @@ class ExplotionList{
 };
 
 class Explotion{
-    int positionX;
-    int positionY;
+    int x;
+    int y;
     int frameIndex = 0;
     int maxIndex = 15;
     TDT4102::Image frame1 = TDT4102::Image("images/explotion.png");
