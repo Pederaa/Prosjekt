@@ -1,13 +1,12 @@
 #include "numBomb.h"
+#include "Bomb.h"
+#include "quary.h"
 
 numBomb::numBomb(std::vector<int> lanes){
     random_device rd;
     default_random_engine generator(rd());
-    xPosition = lanes[(generator()%(lanes.size()))] - width/2;
-    speed = (generator()%2 + 2 );
-    image = TDT4102::Image("images/bomb2.png"); 
-
-    question = getSingleDigitPositiveNumQuestion();
+    x = lanes[(generator()%(lanes.size()))] - width/2;
+    quary = getSingleDigitPositiveNumQuestion();
 }
 
 Quary numBomb::getSingleDigitPositiveNumQuestion(){

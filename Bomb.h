@@ -1,14 +1,16 @@
 #pragma once
 #include "AnimationWindow.h"
 #include "quary.h"
+#include <random>
+#include "constants.h"
 
 class Bomb{
     public:
-        int yPosition = 0;
-        int xPosition = 0;
-        int width = 100;
-        int height = 100;
-        int speed = 3;
+        int y = BOMB_INITIALY;
+        int x;
+        int width = BOMB_WIDTH;
+        int height = BOMB_HEIGHT;
+        int speed = BOMB_SPEED;
 
         TDT4102::Color fillColor = TDT4102::Color::light_sea_green;
         TDT4102::Color textColor = TDT4102::Color::white;
@@ -16,7 +18,7 @@ class Bomb{
         TDT4102::Point topLeftCorner {0, 0};
         TDT4102::Image image;
 
-        Quary question;
+        Quary quary;
 
         Bomb();
         Bomb(std::vector<int> lanes);

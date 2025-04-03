@@ -2,10 +2,9 @@
 #include "Bomb.h"
 #include "quary.h"
 
-class numBomb : Bomb {
 
+class numBomb : public Bomb {
     public:
         numBomb(std::vector<int> lanes);
         Quary getSingleDigitPositiveNumQuestion();
 };
-

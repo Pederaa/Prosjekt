@@ -8,31 +8,28 @@
 #include <quary.h>
 
 int Bomb::posY(){
-    return this->yPosition;
+    return this->y;
 }
 
 int Bomb::posX(){
-    return this->xPosition;
+    return this->x;
 }
 
 std::string Bomb::Answer(){
-    return question.answer;
+    return quary.answer;
 }
 
 void Bomb::moveDown(TDT4102::AnimationWindow& window){
-    yPosition += speed;
+    y += speed;
     drawTekstBoks(window);
 }
 
 void Bomb::drawTekstBoks(TDT4102::AnimationWindow& window){
-    window.draw_image({xPosition, yPosition}, image, 100, 100);
-    window.draw_text({xPosition+30, yPosition+40}, question.question, textColor, 20, textFont);
+    window.draw_image({x, y}, image, width, height);
+    window.draw_text({x+30, y+40}, quary.question, textColor, 20, textFont);
 }
 
-Bomb::Bomb(std::vector<int> lanes){
-    random_device rd;
-    default_random_engine generator(rd());
-    xPosition = lanes[(generator()%(lanes.size()))] - width/2;
-    speed = (generator()%2 + 2 );
+Bomb::Bomb(){
+    //generator = generator(rd);
     image = TDT4102::Image("images/bomb2.png"); 
 }

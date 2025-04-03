@@ -11,17 +11,14 @@
 #include <bits/stdc++.h>
 #include "explotionManager.h"
 #include <random>
+#include "constants.h"
 
-std::list<Bomb> blocks;
+std::list<Bomb> bombs;
 std::list<Explotion> explotions;
 std::list<Laser> lasers;
 laserCannon l(1,2);
 
-constexpr int WINDOW_WIDTH = 1300; //Bildene skal dimasnjoneres slik at 1 bildepiksel er 2*2 spillpiksler. 
-constexpr int WINDOW_HEIGH = 600;
-constexpr std::string GAME_NAME = "Laserturtle";
-constexpr int BEGIN_LANES[] = {50, 250, 450, 750, 950, 1150};
-constexpr int n = sizeof(BEGIN_LANES)/sizeof(BEGIN_LANES[0]);
+constexpr int n = sizeof(BEGIN_LANES)/sizeof(int);
 vector<int> lanes;
 
 void runGame(){
@@ -36,9 +33,9 @@ void runGame(){
     l.pointCannonAt(window.width()/2, (window.height()-100-l.Length()));
 
     while(!window.should_close()){
-        addNewBlocks(generator, lanes);
+        addBombs(generator, lanes);
         drawBackground(window);
-        drawBlocks(window);
+        drawBombs(window);
         drawEggs(window);
         drawLasers(window);
         l.drawCannon(window);
@@ -52,25 +49,25 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
-void addNewBlocks(std::default_random_engine& generator, vector<int> lanes){
+void addBombs(std::default_random_engine& generator, vector<int> lanes){
     if (generator()%80 == 0){ // Legger til nye blokker ca. hver 40. frame.  
         numBomb newBlock = numBomb(lanes);
-        blocks.push_back(newBlock);
+        bombs.push_back(newBlock);
     }
 }
 
-void drawBlocks(TDT4102::AnimationWindow& window){
+void drawBombs(TDT4102::AnimationWindow& window){
     /*Her itererer vi over alle blokkelementene. Vi flytter alle et hakk ned 
     og sletter de som har kommet for langt. Her må vi bruke en while-løkke. 
     Mer info: https://www.geeksforgeeks.org/cpp-remove-elements-from-a-list-while-iterating/
     */
-    list<Bomb>::iterator it = blocks.begin();
-    while (it != blocks.end()){
+    list<Bomb>::iterator it = bombs.begin();
+    while (it != bombs.end()){
         (*it).moveDown(window);
         if ((*it).posY() >= getHeightOfeggs() - 100){
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             damageEggAtXPosition((*it).posX());
-            it = blocks.erase(it);
+            it = bombs.erase(it);
             continue;
         }
         it++;
@@ -78,17 +75,17 @@ void drawBlocks(TDT4102::AnimationWindow& window){
 }
 
 void checkIfGuessIsCorrect(std::string guess){
-    if (blocks.size() == 0){
+    if (bombs.size() == 0){
         return;
     }
 
     // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne den som passer
-    for (auto it = blocks.begin(); it != blocks.end(); it++){
+    for (auto it = bombs.begin(); it != bombs.end(); it++){
         if(guess == (*it).Answer()){
             l.pointCannonAt((*it).posX(), (*it).posY());
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             lasers.push_back(Laser(l, (*it)));
-            blocks.erase(it);
+            bombs.erase(it);
             break;
         }
     }
@@ -127,12 +124,12 @@ void removeLineAtX(int x){
         }
     }
 
-    auto it = blocks.begin();
-    while (it != blocks.end()){
+    auto it = bombs.begin();
+    while (it != bombs.end()){
         if ((*it).posX() == x - 50){
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             eraseEgg((*it).posX());
-            it = blocks.erase(it);
+            it = bombs.erase(it);
             continue;
         }
         it++;
