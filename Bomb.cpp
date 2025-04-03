@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
+#include <question.h>
 
 int Bomb::posY(){
     return this->yPosition;
@@ -15,7 +16,7 @@ int Bomb::posX(){
 }
 
 std::string Bomb::Answer(){
-    return answer;
+    return question.answer;
 }
 
 void Bomb::moveDown(TDT4102::AnimationWindow& window){
@@ -24,10 +25,8 @@ void Bomb::moveDown(TDT4102::AnimationWindow& window){
 }
 
 void Bomb::drawTekstBoks(TDT4102::AnimationWindow& window){
-    //window.draw_rectangle({xPosition, yPosition}, width, height, fillColor);
     window.draw_image({xPosition, yPosition}, image, 100, 100);
-
-    window.draw_text({xPosition+30, yPosition+40}, question, textColor, 20, textFont);
+    window.draw_text({xPosition+30, yPosition+40}, question.question, textColor, 20, textFont);
 }
 
 Bomb::Bomb(std::vector<int> lanes){
@@ -37,6 +36,19 @@ Bomb::Bomb(std::vector<int> lanes){
     speed = (generator()%2 + 2 );
     image = TDT4102::Image("images/bomb2.png"); 
 
-    question = "1+1";
-    answer = "2";
+    question = getSingleDigitPositiveNumQuestion();
+}
+
+Question getSingleDigitPositiveNumQuestion(){
+    random_device rd;
+    default_random_engine generator(rd());
+
+    int a = generator()%10+1;
+    int b = generator()%10+1;
+
+    Question q;
+    q.question = to_string(a) + "+" + to_string(b);
+    q.answer = to_string(a+b);
+
+    return q;
 }

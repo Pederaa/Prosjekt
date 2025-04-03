@@ -1,5 +1,6 @@
 #pragma once
 #include "AnimationWindow.h"
+#include "question.h"
 
 class Bomb{
     int yPosition = 0;
@@ -14,8 +15,7 @@ class Bomb{
     TDT4102::Point topLeftCorner {0, 0};
     TDT4102::Image image;
 
-    std::string question;
-    std::string answer;
+    Question question;
 
     public:
         Bomb(std::vector<int> lanes);
@@ -25,3 +25,5 @@ class Bomb{
         void moveDown(TDT4102::AnimationWindow& window);
         void drawTekstBoks(TDT4102::AnimationWindow& window);
 };
+
+Question getSingleDigitPositiveNumQuestion();
