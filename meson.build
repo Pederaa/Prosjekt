@@ -36,6 +36,7 @@ exe = executable(
 'laserCannon.cpp',
 'main.cpp',
 'mainPage.cpp',
+'numBomb.cpp',
 'readKeyInput.cpp',
 'typingScreen.cpp',
   dependencies : [animationwindow_dep, sdl2_dep, std_lib_facilities_dep],

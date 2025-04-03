@@ -3,7 +3,7 @@
 #include <cctype>
 #include <string>
 
-struct Question {
+struct Quary {
     std::string question;
     std::string answer;
 };

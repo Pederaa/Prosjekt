@@ -2,6 +2,7 @@
 #include "std_lib_facilities.h"
 #include "gameRunner.h"
 #include "Bomb.h"
+#include "numBomb.h"
 #include "readKeyInput.h"
 #include "backgroundGenerator.h"
 #include "typingScreen.h"
@@ -53,7 +54,7 @@ void runGame(){
 
 void addNewBlocks(std::default_random_engine& generator, vector<int> lanes){
     if (generator()%80 == 0){ // Legger til nye blokker ca. hver 40. frame.  
-        Bomb newBlock = Bomb(lanes);
+        numBomb newBlock = numBomb(lanes);
         blocks.push_back(newBlock);
     }
 }
