@@ -51,8 +51,8 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
-void addNewBlocks( std::default_random_engine& generator, vector<int> lanes){
-    if (generator()%40 == 1){ // Legger til nye blokker ca. hver 40. frame.  
+void addNewBlocks(std::default_random_engine& generator, vector<int> lanes){
+    if (generator()%80 == 0){ // Legger til nye blokker ca. hver 40. frame.  
         Bomb newBlock = Bomb(lanes);
         blocks.push_back(newBlock);
     }
