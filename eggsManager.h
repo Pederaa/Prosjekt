@@ -1,15 +1,16 @@
 #pragma once
 #include "AnimationWindow.h"
+#include "constants.h"
 
 class Egg{
-    int y = 0;
+    int y = EGGS_Y;
     int x = 0;
     TDT4102::Color fillColor = TDT4102::Color::red;
 
     public:
-        int hp = 3;
+        int hp = EGGS_MAXHP;
         Egg();
-        Egg(int xPos, int yPos);
+        Egg(int xPos);
         void removeHP();
         int posY();
         int posX();

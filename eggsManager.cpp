@@ -3,9 +3,8 @@
 #include "AnimationWindow.h"
 #include "std_lib_facilities.h"
 
-Egg::Egg(int xPos, int yPos){
+Egg::Egg(int xPos){
     x = xPos;
-    y = yPos;
 }
 
 void Egg::removeHP(){
@@ -47,7 +46,7 @@ void Egg::drawEgg(TDT4102::AnimationWindow& window){
 static std::vector<Egg> eggs;
 void initlizeEggs(std::vector<int> lanes){
     for (int i=0; i<lanes.size(); i++) {
-        eggs.push_back(Egg(lanes[i], 500));
+        eggs.push_back(Egg(lanes[i]));
     }
 }
 

@@ -12,12 +12,34 @@ constexpr int TYPINGSCREEN_HEIGHT = 50;
 constexpr int TYPINGSCREEN_WIDTH = 200;
 constexpr int TYPINGSCREEN_BOTTOMMARGIN = 100;
 
+constexpr int TYPINGSCREEN_TEXTSIZE = 20;
+
 
 //Bomber
 constexpr int BOMB_SPEED = 3;
 constexpr int BOMB_INITIALY = 0;
 constexpr int BOMB_HEIGHT = 100;
 constexpr int BOMB_WIDTH = 100;
+
+constexpr int BOMB_CENTERCORRECTION_X = 50;
+constexpr int BOMB_CENTERCORRECTION_Y = 50;
+
+
+//Explotion
+constexpr int EXPLOTION_MAXFRAME_INDEX = 15;
+constexpr int EXPLOTION_WIDTH = 100;
+constexpr int EXPLOTION_HEIGHT = 100;
+
+
+
+//Laser
+constexpr int LASER_CANNON_LENGTH = 100;
+constexpr int LASER_MAXFRAME_INDEX = 10;
+
+
+//Eggs
+constexpr int EGGS_MAXHP = 3;
+constexpr int EGGS_Y = 500;
 
 
 //Diverse

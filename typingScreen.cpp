@@ -9,5 +9,5 @@ void drawTypingScreen(TDT4102::AnimationWindow& window, std::string c){
 
     window.draw_rectangle(posisjon, TYPINGSCREEN_WIDTH, TYPINGSCREEN_HEIGHT, TDT4102::Color::black);
 
-    window.draw_text(posisjon, c, TDT4102::Color::white, 20, font);
+    window.draw_text(posisjon, c, TDT4102::Color::white, TYPINGSCREEN_TEXTSIZE, font);
 }

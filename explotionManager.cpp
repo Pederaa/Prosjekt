@@ -11,7 +11,7 @@ bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
         return true;
     }
 
-    window.draw_image({x, y}, frame1, 100, 100);
+    window.draw_image({x, y}, frame1, EXPLOTION_WIDTH, EXPLOTION_HEIGHT);
     frameIndex++;
     return false;
 }

@@ -3,7 +3,7 @@
 
 class laserCannon{
     TDT4102::Color Color = TDT4102::Color::black;
-    int length = 100;
+    int length = LASER_CANNON_LENGTH;
 
     public:
         TDT4102::Point basePosition;
@@ -21,7 +21,7 @@ class Laser{
     TDT4102::Point endPosition;
     TDT4102::Color Color = TDT4102::Color::red;
     int frameIndex = 0;
-    int maxIndex = 10;
+    int maxIndex = LASER_MAXFRAME_INDEX;
 
     public:
         Laser(laserCannon cannon, Bomb bomb);
