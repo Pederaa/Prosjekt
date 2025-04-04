@@ -5,12 +5,12 @@
 constexpr int WINDOW_WIDTH = 1300; //Bildene skal dimasnjoneres slik at 1 bildepiksel er 2*2 spillpiksler. 
 constexpr int WINDOW_HEIGH = 600;
 constexpr std::string GAME_NAME = "Laserturtle";
-
+constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 
 // Input-skjerm
 constexpr int TYPINGSCREEN_HEIGHT = 50;
 constexpr int TYPINGSCREEN_WIDTH = 200;
-constexpr int TYPINGSCREEN_BOTTOMMARGIN = 100;
+constexpr int TYPINGSCREEN_BOTTOMMARGIN = 0;
 
 constexpr int TYPINGSCREEN_TEXTSIZE = 20;
 
@@ -40,7 +40,3 @@ constexpr int LASER_MAXFRAME_INDEX = 10;
 //Eggs
 constexpr int EGGS_MAXHP = 3;
 constexpr int EGGS_Y = 500;
-
-
-//Diverse
-constexpr int BEGIN_LANES[] = {50, 250, 450, 750, 950, 1150};

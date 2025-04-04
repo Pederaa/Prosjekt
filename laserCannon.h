@@ -2,12 +2,14 @@
 #include "Bomb.h"
 
 class laserCannon{
-    TDT4102::Color Color = TDT4102::Color::black;
+    TDT4102::Color Color = TDT4102::Color::gray;
     int length = LASER_CANNON_LENGTH;
 
     public:
         TDT4102::Point basePosition;
         TDT4102::Point endPosition;
+        double rotation = 0;
+        int widht = 10;
         laserCannon(int posX, int posY);
         void pointCannonAt(int targetX, int targetY);
         void drawCannon(TDT4102::AnimationWindow& window);
@@ -20,6 +22,8 @@ class Laser{
     TDT4102::Point basePosition;
     TDT4102::Point endPosition;
     TDT4102::Color Color = TDT4102::Color::red;
+    int widht = 5;
+    double rotation = 0;
     int frameIndex = 0;
     int maxIndex = LASER_MAXFRAME_INDEX;
 
