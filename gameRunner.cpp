@@ -23,7 +23,8 @@ vector<int> lanes;
 
 void runGame(){
     TDT4102::AnimationWindow window(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME); //Lager en instanse av et animasjonsvindu.
-    default_random_engine generator;
+    random_device rd;
+    default_random_engine generator(rd());
     std::string c = "";
 
     copy(&BEGIN_LANES[0], &BEGIN_LANES[n], back_inserter(lanes));
@@ -49,11 +50,16 @@ void runGame(){
     cout << "Spill over" << endl;
 }
 
+int bombaddingIterator = 0;
 void addBombs(std::default_random_engine& generator, vector<int> lanes){
-    if (generator()%80 == 0){ // Legger til nye blokker ca. hver 40. frame.  
-        numBomb newBlock = numBomb(lanes);
-        bombs.push_back(newBlock);
+    if (bombaddingIterator == 80){
+        numBomb newBomb = numBomb(lanes);
+        bombs.push_back(newBomb);
+        bombaddingIterator = 0;
+        return;
     }
+
+    bombaddingIterator++;
 }
 
 void drawBombs(TDT4102::AnimationWindow& window){
@@ -117,7 +123,7 @@ void drawLasers(TDT4102::AnimationWindow& window){
 }
 
 void removeLineAtX(int x){
-    for (int i = 0; i < lanes.size(); i++){
+    for (unsigned long long i = 0; i < lanes.size(); i++){
         if(lanes.at(i) == x){
             lanes.erase(lanes.begin() + i);
             break;

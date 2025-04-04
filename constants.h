@@ -16,7 +16,7 @@ constexpr int TYPINGSCREEN_TEXTSIZE = 20;
 
 
 //Bomber
-constexpr int BOMB_SPEED = 3;
+constexpr int BOMB_SPEED = 2;
 constexpr int BOMB_INITIALY = 0;
 constexpr int BOMB_HEIGHT = 100;
 constexpr int BOMB_WIDTH = 100;

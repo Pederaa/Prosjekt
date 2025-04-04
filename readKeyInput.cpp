@@ -17,9 +17,11 @@ std::unordered_map<KeyboardKey, char> keyMap = {
 };
 
 static bool isKeyPressed = false;
+static KeyboardKey prevKey = KeyboardKey::SPACE;
 void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     if (window.is_key_down(KeyboardKey::BACKSPACE)){
         if(!isKeyPressed && !typeText.empty()){
+            prevKey = KeyboardKey::BACKSPACE;
             typeText.pop_back();
             isKeyPressed = true;
         }
@@ -30,6 +32,7 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     else if (window.is_key_down(KeyboardKey::ENTER)){
         if(!isKeyPressed && !typeText.empty()){
             checkIfGuessIsCorrect(typeText);
+            prevKey = KeyboardKey::ENTER;
             typeText = "";
         }
         isKeyPressed = true;
@@ -38,9 +41,10 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
 
     for (const auto& [key, value] : keyMap) {
         if (window.is_key_down(key)) {
-            if (!isKeyPressed){
+            if (!isKeyPressed || key != prevKey){
                 typeText += value;
             }
+            prevKey = key;
             isKeyPressed = true;
             return;
         }

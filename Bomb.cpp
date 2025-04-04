@@ -1,7 +1,7 @@
 #include "Bomb.h"
 #include "std_lib_facilities.h"
 #include <random>
-#include "animationWindow.h"
+#include "AnimationWindow.h"
 #include <algorithm>
 #include <cctype>
 #include <string>

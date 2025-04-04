@@ -1,5 +1,5 @@
 #include "std_lib_facilities.h"
-#include "animationWindow.h"
+#include "AnimationWindow.h"
 #include "typingScreen.h"
 #include "constants.h"
 
