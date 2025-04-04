@@ -20,21 +20,21 @@ static bool isKeyPressed = false;
 static KeyboardKey prevKey = KeyboardKey::SPACE;
 void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     if (window.is_key_down(KeyboardKey::BACKSPACE)){
-        if(!isKeyPressed && !typeText.empty()){
-            prevKey = KeyboardKey::BACKSPACE;
+        if((!isKeyPressed || prevKey != KeyboardKey::BACKSPACE) && !typeText.empty()){
             typeText.pop_back();
-            isKeyPressed = true;
         }
+
+        prevKey = KeyboardKey::BACKSPACE;
         isKeyPressed = true;
         return;
     }
 
     else if (window.is_key_down(KeyboardKey::ENTER)){
-        if(!isKeyPressed && !typeText.empty()){
+        if((!isKeyPressed || prevKey != KeyboardKey::ENTER) && !typeText.empty()){
             checkIfGuessIsCorrect(typeText);
-            prevKey = KeyboardKey::ENTER;
             typeText = "";
         }
+        prevKey = KeyboardKey::ENTER;
         isKeyPressed = true;
         return;
     }
