@@ -4,8 +4,9 @@
 #include "widgets/Button.h"
 #include "std_lib_facilities.h"
 #include "constants.h"
+#include "pageMode.h"
 
-static bool should_run_game = false;
+static pageMode currentPageMode;
 
 struct mainWindow : public TDT4102::AnimationWindow {
     mainWindow();
@@ -16,7 +17,7 @@ struct mainWindow : public TDT4102::AnimationWindow {
 };
 
 void mainWindow::startKnappCallback(){
-    should_run_game = true;
+    currentPageMode = pageMode::playing;
 }
 
 mainWindow::mainWindow()
@@ -27,10 +28,11 @@ mainWindow::mainWindow()
     }
 
 void openMainPage(){
+    currentPageMode = pageMode::frontpage;
     auto window = mainWindow();
 
     while(!window.should_close()){
-        if (should_run_game){
+        if (currentPageMode == pageMode::playing){
             runGame(window);
         }
 
