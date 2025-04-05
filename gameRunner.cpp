@@ -21,8 +21,7 @@ laserCannon l(1,2);
 constexpr int n = sizeof(BEGIN_LANES)/sizeof(int);
 vector<int> lanes;
 
-void runGame(){
-    TDT4102::AnimationWindow window(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME); //Lager en instanse av et animasjonsvindu.
+void runGame(TDT4102::AnimationWindow &window){
     random_device rd;
     default_random_engine generator(rd());
     std::string c = "";
@@ -34,6 +33,7 @@ void runGame(){
     l.pointCannonAt(window.width()/2, (window.height()-100-l.Length()));
 
     while(!window.should_close()){
+
         addBombs(generator, lanes);
         drawBackground(window);
         drawBombs(window);
@@ -41,12 +41,14 @@ void runGame(){
         drawLasers(window);
         l.drawCannon(window);
         drawExplotions(window);
+        //cout << "e" << endl;
         drawTypingScreen(window, c);
+        //cout << "B" << endl;
         getCharInput(window, c);
 
+        //cout << "g" << endl;
         window.next_frame();
     }
-
     cout << "Spill over" << endl;
 }
 
