@@ -27,14 +27,13 @@ constexpr int BOMB_CENTERCORRECTION_Y = 50;
 
 //Explotion
 constexpr int EXPLOTION_MAXFRAME_INDEX = 15;
-constexpr int EXPLOTION_WIDTH = 100;
-constexpr int EXPLOTION_HEIGHT = 100;
-
+constexpr int EXPLOTION_WIDTH = 130;
+constexpr int EXPLOTION_HEIGHT = 130;
 
 
 //Laser
 constexpr int LASER_CANNON_LENGTH = 100;
-constexpr int LASER_MAXFRAME_INDEX = 10;
+constexpr int LASER_MAXFRAME_INDEX = 7;
 
 
 //Eggs
