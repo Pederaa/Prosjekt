@@ -21,7 +21,7 @@ laserCannon l(1,2);
 constexpr int n = sizeof(BEGIN_LANES)/sizeof(int);
 vector<int> lanes;
 
-void runGame(TDT4102::AnimationWindow &window){
+void runGame(TDT4102::AnimationWindow& window){
     random_device rd;
     default_random_engine generator(rd());
     std::string c = "";
@@ -33,7 +33,6 @@ void runGame(TDT4102::AnimationWindow &window){
     l.pointCannonAt(window.width()/2, (window.height()-100-l.Length()));
 
     while(!window.should_close()){
-
         addBombs(generator, lanes);
         drawBackground(window);
         drawBombs(window);
