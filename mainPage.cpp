@@ -11,11 +11,19 @@ static pageMode currentPageMode;
 struct mainWindow : public TDT4102::AnimationWindow {
     mainWindow();
     void startKnappCallback();
+    void creditsKnappCallback();
 
     TDT4102::Button startKnapp;
+    //TDT4102::Button creditsKnapp;
+    TDT4102::Image logo;
 };
 
 void mainWindow::startKnappCallback(){
+    currentPageMode = pageMode::playing;
+    startKnapp.setVisible(false);
+}
+
+void mainWindow::creditsKnappCallback(){
     currentPageMode = pageMode::playing;
     startKnapp.setVisible(false);
 }
@@ -27,14 +35,16 @@ mainWindow::mainWindow()
         startKnapp.setButtonColor(TDT4102::Color::silver);
         add(startKnapp);
     }
-
+    
 void openMainPage(){
     currentPageMode = pageMode::frontpage;
     auto window = mainWindow();
+    window.logo = TDT4102::Image("images/logo.png");
 
     while(!window.should_close()){
         switch (currentPageMode){
         case pageMode::frontpage:
+            window.draw_image({(WINDOW_WIDTH-600)/2, WINDOW_HEIGH/2 -400}, window.logo, 600, 600);
             window.startKnapp.setVisible(true);
             break;
         case pageMode::settingDifficulty:
