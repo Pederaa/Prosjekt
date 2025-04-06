@@ -40,12 +40,8 @@ void runGame(TDT4102::AnimationWindow& window){
         drawLasers(window);
         l.drawCannon(window);
         drawExplotions(window);
-        //cout << "e" << endl;
         drawTypingScreen(window, c);
-        //cout << "B" << endl;
         getCharInput(window, c);
-
-        //cout << "g" << endl;
         window.next_frame();
     }
     cout << "Spill over" << endl;

@@ -7,6 +7,15 @@ constexpr int WINDOW_HEIGH = 600;
 constexpr std::string GAME_NAME = "Laserturtle";
 constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 
+
+// Forside
+constexpr int LOGO_SIZE = 600;
+constexpr int LOGO_OFFCENTERX = -20;
+constexpr int LOGO_OFFCENTERY = -100;
+constexpr int BUTTON_WIDTH = 200;
+constexpr int BUTTON_HEIGHT = 20;
+
+
 // Input-skjerm
 constexpr int TYPINGSCREEN_HEIGHT = 50;
 constexpr int TYPINGSCREEN_WIDTH = 200;
