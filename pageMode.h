@@ -1,5 +1,6 @@
 enum class pageMode {
     frontpage,
     settingDifficulty,
-    playing
+    playing,
+    credits
 };
