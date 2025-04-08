@@ -16,6 +16,10 @@ constexpr int BUTTON_WIDTH = 200;
 constexpr int BUTTON_HEIGHT = 20;
 
 
+// Takkeside
+constexpr int TAKKPAGE_YOFFSET = -100;
+
+
 // Input-skjerm
 constexpr int TYPINGSCREEN_HEIGHT = 50;
 constexpr int TYPINGSCREEN_WIDTH = 200;

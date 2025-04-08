@@ -17,7 +17,10 @@ void laserCannon::pointCannonAt(int targetX, int targetY){
 
 void laserCannon::pointCannonUp(){
     endPosition.x = basePosition.x;
-    endPosition.y = endPosition.y - length;
+    endPosition.y = basePosition.y-length;
+    rotation = 3.14/2;
+
+    cout << rotation << endl;
     cout << "{" << endPosition.x << ", " << endPosition.y << "}" << endl;
 }
 

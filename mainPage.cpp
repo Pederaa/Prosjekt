@@ -37,7 +37,7 @@ void openMainPage(){
     creditsKnapp.setButtonColor(color);
     window.add(creditsKnapp);
 
-    TDT4102::Button tilbakeKnapp {{(WINDOW_WIDTH-BUTTON_WIDTH)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15 + 50+50}, BUTTON_WIDTH, BUTTON_HEIGHT, "Tilbake"};
+    TDT4102::Button tilbakeKnapp {{(WINDOW_WIDTH-BUTTON_WIDTH)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15 + 50+50+30 + TAKKPAGE_YOFFSET}, BUTTON_WIDTH, BUTTON_HEIGHT, "Tilbake"};
     tilbakeKnapp.setCallback(tilbakeKnappCallback);
     tilbakeKnapp.setButtonColor(color);
     window.add(tilbakeKnapp);
@@ -56,10 +56,11 @@ void openMainPage(){
             startKnapp.setVisible(false);
             creditsKnapp.setVisible(false);
             tilbakeKnapp.setVisible(true);
-            window.draw_text({(WINDOW_WIDTH-50*4)/2 + 10, (WINDOW_HEIGH-50)/2-55}, "Takk til", TDT4102::Color::black, 50);
-            window.draw_text({(WINDOW_WIDTH-32*20)/2, WINDOW_HEIGH/2-10}, "Eksplosjonene er laget av Yuliya Pauliukevich (klyaksun) på Vecteezy.com");
-            window.draw_text({(WINDOW_WIDTH-15*20)/2, WINDOW_HEIGH/2+20}, "Logoen er laget med hjelp fra ChatGPT");
-            window.draw_text({(WINDOW_WIDTH-3*20)/2, WINDOW_HEIGH/2+50}, "meg");
+            window.draw_text({(WINDOW_WIDTH-52*4)/2 + 10, (WINDOW_HEIGH-50)/2-55 + TAKKPAGE_YOFFSET}, "Takk til ...", TDT4102::Color::black, 50);
+            window.draw_text({(WINDOW_WIDTH-32*20)/2, WINDOW_HEIGH/2-10 + TAKKPAGE_YOFFSET}, "Yuliya Pauliukevich (klyaksun) på Vecteezy.com for eksplosjonsanimasjonene");
+            window.draw_text({(WINDOW_WIDTH-32*20)/2, WINDOW_HEIGH/2+20 + TAKKPAGE_YOFFSET}, "M DANIEL (danilcool78457001) på Vecteezy.com for skilpaddespriten");
+            window.draw_text({(WINDOW_WIDTH-15*20)/2, WINDOW_HEIGH/2+50 + TAKKPAGE_YOFFSET}, "ChatGPT for hjelp med å lage logoen");
+            window.draw_text({(WINDOW_WIDTH-3*20)/2, WINDOW_HEIGH/2+80 + TAKKPAGE_YOFFSET}, "meg");
             break;
         case pageMode::settingDifficulty:
             startKnapp.setVisible(false);
