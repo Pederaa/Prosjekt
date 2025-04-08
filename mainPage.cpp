@@ -7,7 +7,6 @@
 #include "pageMode.h"
 
 static pageMode currentPageMode;
-
 void startKnappCallback(){
     currentPageMode = pageMode::playing;
 }
@@ -24,7 +23,7 @@ void openMainPage(){
     currentPageMode = pageMode::frontpage;
     auto window = AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME);
 
-    TDT4102::Image logo = TDT4102::Image("images/logo.png");
+    TDT4102::Image logo = TDT4102::Image("images/updated_logo.png");
     TDT4102::Color color = TDT4102::Color::silver;
 
     TDT4102::Button startKnapp {{(WINDOW_WIDTH-200)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15}, BUTTON_WIDTH, BUTTON_HEIGHT, "Start"};
