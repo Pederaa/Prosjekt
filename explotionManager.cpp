@@ -8,10 +8,8 @@ Explotion::Explotion(int posX, int posY){
 
 bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
     if (frameIndex >= maxIndex){
-        cout << "BBBBB" << endl;
         return true;
     }
-    cout << frameIndex%15 << endl;
 
     if (frameIndex <= 2){
         window.draw_image({x, y}, frame4, EXPLOTION_WIDTH, EXPLOTION_HEIGHT);

@@ -13,7 +13,12 @@ void laserCannon::pointCannonAt(int targetX, int targetY){
     endPosition.y = basePosition.y - length*((basePosition.y - targetY-BOMB_CENTERCORRECTION_Y))/sqrt(pow(basePosition.x - targetX-BOMB_CENTERCORRECTION_X, 2) + pow(basePosition.y - targetY-BOMB_CENTERCORRECTION_Y, 2));
 
     rotation = std::atan2(basePosition.y - endPosition.y, endPosition.x - basePosition.x);
-    //cout << (rotation/3.14)*180 << endl;
+}
+
+void laserCannon::pointCannonUp(){
+    endPosition.x = basePosition.x;
+    endPosition.y = endPosition.y - length;
+    cout << "{" << endPosition.x << ", " << endPosition.y << "}" << endl;
 }
 
 void laserCannon::drawCannon(TDT4102::AnimationWindow& window){ 
@@ -29,6 +34,11 @@ void laserCannon::drawCannon(TDT4102::AnimationWindow& window){
 void laserCannon::setBaseposition(int x, int y){
     basePosition = {x, y};
 }
+
+TDT4102::Point laserCannon::getBasePosition(){
+    return basePosition;
+}
+
 
 int laserCannon::Length(){
     return length;

@@ -29,8 +29,8 @@ void runGame(TDT4102::AnimationWindow& window){
     copy(&BEGIN_LANES[0], &BEGIN_LANES[n], back_inserter(lanes));
 
     initlizeEggs(lanes);
-    l.setBaseposition(window.width()/2, window.height()-100);
-    l.pointCannonAt(window.width()/2, (window.height()-100-l.Length()));
+    l.setBaseposition(LASER_CANNON_X, LASER_CANNON_Y);
+    l.pointCannonUp();
 
     while(!window.should_close()){
         addBombs(generator, lanes);
@@ -39,6 +39,7 @@ void runGame(TDT4102::AnimationWindow& window){
         drawEggs(window);
         drawLasers(window);
         l.drawCannon(window);
+        drawTurtle(window);
         drawExplotions(window);
         drawTypingScreen(window, c);
         getCharInput(window, c);
@@ -137,4 +138,11 @@ void removeLineAtX(int x){
         }
         it++;
     }
+}
+
+
+static TDT4102::Image turtle = TDT4102::Image("images/turtle_image.png");
+void drawTurtle(TDT4102::AnimationWindow& window){
+    window.draw_image({l.getBasePosition().x + TURTLE_XOFFSET, l.getBasePosition().y + TURTLE_YOFFSET},
+                         turtle, TURTLE__SIZE, TURTLE__SIZE);
 }

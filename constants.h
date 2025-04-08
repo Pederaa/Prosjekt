@@ -33,17 +33,23 @@ constexpr int BOMB_WIDTH = 100;
 constexpr int BOMB_CENTERCORRECTION_X = 50;
 constexpr int BOMB_CENTERCORRECTION_Y = 50;
 
+//Sklpadde
+constexpr int TURTLE__SIZE = 200;
+constexpr int TURTLE_XOFFSET = -107;
+constexpr int TURTLE_YOFFSET = -68;
+
+
+//Laser
+constexpr int LASER_CANNON_LENGTH = 50;
+constexpr int LASER_CANNON_X = WINDOW_WIDTH/2;
+constexpr int LASER_CANNON_Y = WINDOW_HEIGH-150;
+constexpr int LASER_MAXFRAME_INDEX = 7;
+
 
 //Explotion
 constexpr int EXPLOTION_MAXFRAME_INDEX = 15;
 constexpr int EXPLOTION_WIDTH = 130;
 constexpr int EXPLOTION_HEIGHT = 130;
-
-
-//Laser
-constexpr int LASER_CANNON_LENGTH = 100;
-constexpr int LASER_MAXFRAME_INDEX = 7;
-
 
 //Eggs
 constexpr int EGGS_MAXHP = 3;

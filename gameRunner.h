@@ -9,3 +9,4 @@ void checkIfGuessIsCorrect(std::string guess);
 void drawExplotions(TDT4102::AnimationWindow& window);
 void drawLasers(TDT4102::AnimationWindow& window);
 void removeLineAtX(int x);
+void drawTurtle(TDT4102::AnimationWindow& window);

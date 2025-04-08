@@ -12,8 +12,10 @@ class laserCannon{
         int widht = 10;
         laserCannon(int posX, int posY);
         void pointCannonAt(int targetX, int targetY);
+        void pointCannonUp();
         void drawCannon(TDT4102::AnimationWindow& window);
         void setBaseposition(int x, int y);
+        TDT4102::Point getBasePosition();
         int Length();
 };
 
