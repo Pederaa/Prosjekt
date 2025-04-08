@@ -3,6 +3,7 @@
 #include "gameRunner.h"
 #include "Bomb.h"
 #include "numBomb.h"
+#include "textBomb.h"
 #include "readKeyInput.h"
 #include "backgroundGenerator.h"
 #include "typingScreen.h"
@@ -51,10 +52,18 @@ void runGame(TDT4102::AnimationWindow& window){
 int bombaddingIterator = 0;
 void addBombs(std::default_random_engine& generator, vector<int> lanes){
     if (bombaddingIterator == 80){
-        numBomb newBomb = numBomb(lanes);
-        bombs.push_back(newBomb);
-        bombaddingIterator = 0;
-        return;
+
+        if (generator()%2 == 0){
+            textBomb newBomb = textBomb(lanes);
+            bombs.push_back(newBomb);
+            bombaddingIterator = 0;
+            return;
+        } else{
+            numBomb newBomb = numBomb(lanes);
+            bombs.push_back(newBomb);
+            bombaddingIterator = 0;
+            return;
+        }
     }
 
     bombaddingIterator++;

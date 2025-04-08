@@ -38,6 +38,7 @@ exe = executable(
 'mainPage.cpp',
 'numBomb.cpp',
 'readKeyInput.cpp',
+'textBomb.cpp',
 'typingScreen.cpp',
   dependencies : [animationwindow_dep, sdl2_dep, std_lib_facilities_dep],
   cpp_args : compiler_flags

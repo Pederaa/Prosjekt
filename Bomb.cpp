@@ -30,6 +30,5 @@ void Bomb::drawTekstBoks(TDT4102::AnimationWindow& window){
 }
 
 Bomb::Bomb(){
-    //generator = generator(rd);
-    image = TDT4102::Image("images/bomb2.png"); 
+    //image = TDT4102::Image("images/bomb2.png"); 
 }

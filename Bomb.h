@@ -16,9 +16,9 @@ class Bomb{
         TDT4102::Color textColor = TDT4102::Color::white;
         TDT4102::Font textFont = TDT4102::Font::times_bold;
         TDT4102::Point topLeftCorner {0, 0};
-        TDT4102::Image image;
+        TDT4102::Image image = TDT4102::Image("images/bomb2.png");
 
-        Quary quary;
+        Quary quary = Quary("x", "y");
 
         Bomb();
         Bomb(std::vector<int> lanes);
