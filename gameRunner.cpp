@@ -25,7 +25,7 @@ vector<int> lanes;
 void runGame(TDT4102::AnimationWindow& window){
     random_device rd;
     default_random_engine generator(rd());
-    std::string c = "";
+    std::string typeText = "";
 
     copy(&BEGIN_LANES[0], &BEGIN_LANES[n], back_inserter(lanes));
 
@@ -42,8 +42,8 @@ void runGame(TDT4102::AnimationWindow& window){
         l.drawCannon(window);
         drawTurtle(window);
         drawExplotions(window);
-        drawTypingScreen(window, c);
-        getCharInput(window, c);
+        drawTypingScreen(window, typeText);
+        getCharInput(window, typeText);
         window.next_frame();
     }
     cout << "Spill over" << endl;
@@ -87,9 +87,9 @@ void drawBombs(TDT4102::AnimationWindow& window){
     }
 }
 
-void checkIfGuessIsCorrect(std::string guess){
+bool checkIfGuessIsCorrect(std::string guess){
     if (bombs.size() == 0){
-        return;
+        return false;
     }
 
     // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne den som passer
@@ -99,9 +99,10 @@ void checkIfGuessIsCorrect(std::string guess){
             explotions.push_back(Explotion((*it).posX(), (*it).posY()));
             lasers.push_back(Laser(l, (*it)));
             bombs.erase(it);
-            break;
+            return true;
         }
     }
+    return false;
 }
 
 void drawExplotions(TDT4102::AnimationWindow& window){

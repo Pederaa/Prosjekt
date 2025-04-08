@@ -29,20 +29,26 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
         return;
     }
 
-    else if (window.is_key_down(KeyboardKey::ENTER)){
-        if((!isKeyPressed || prevKey != KeyboardKey::ENTER) && !typeText.empty()){
-            checkIfGuessIsCorrect(typeText);
-            typeText = "";
-        }
-        prevKey = KeyboardKey::ENTER;
-        isKeyPressed = true;
-        return;
-    }
+    
+    // else if (window.is_key_down(KeyboardKey::ENTER)){
+    //     if((!isKeyPressed || prevKey != KeyboardKey::ENTER) && !typeText.empty()){
+    //         checkIfGuessIsCorrect(typeText);
+    //         typeText = "";
+    //     }
+    //     prevKey = KeyboardKey::ENTER;
+    //     isKeyPressed = true;
+    //     return;
+    // }
 
     for (const auto& [key, value] : keyMap) {
         if (window.is_key_down(key)) {
             if (!isKeyPressed || key != prevKey){
                 typeText += value;
+
+                bool d = checkIfGuessIsCorrect(typeText);
+                if (d){
+                    typeText = "";
+                }
             }
             prevKey = key;
             isKeyPressed = true;
