@@ -1,5 +1,5 @@
 #include "std_lib_facilities.h"
-#include "laserTurtleWindow.h"
+#include "LaserTurtleWindow.h"
 
 int main() {
     LTWindow ltw;
