@@ -31,12 +31,9 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     //Backspace er den eneste spesielle tasten. Den sletter siste element i typetext. 
     if (window.is_key_down(KeyboardKey::BACKSPACE)){ 
         if((!isKeyPressed || prevKey != KeyboardKey::BACKSPACE) && !typeText.empty()){
-            typeText.pop_back();
-
-            if (checkIfGuessIsCorrect(typeText)){ 
-                typeText = "";
-            }
+            typeText = "";
         }
+        
         prevKey = KeyboardKey::BACKSPACE;
         isKeyPressed = true;
         return;

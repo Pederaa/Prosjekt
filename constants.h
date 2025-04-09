@@ -23,7 +23,7 @@ constexpr int TAKKPAGE_YOFFSET = -100;
 // Input-skjerm
 constexpr int TYPINGSCREEN_HEIGHT = 50;
 constexpr int TYPINGSCREEN_WIDTH = 200;
-constexpr int TYPINGSCREEN_BOTTOMMARGIN = 0;
+constexpr int TYPINGSCREEN_BOTTOMMARGIN = 30;
 
 constexpr int TYPINGSCREEN_TEXTSIZE = 20;
 
