@@ -1,0 +1,25 @@
+#pragma once
+#include "LaserTurtleWindow.h"
+#include "constants.h"
+#include "AnimationWindow.h"
+#include "widgets/Button.h"
+#include "pageMode.h"
+
+class LTWindow : public TDT4102::AnimationWindow {
+    public:
+        LTWindow();
+        void startKnappCallback();
+        void creditsKnappCallback();
+        void tilbakeKnappCallback();
+
+        TDT4102::Image logo = TDT4102::Image("images/updated_logo.png");
+        TDT4102::Color buttonColor = TDT4102::Color::silver;
+
+        void updateFrame();
+        pageMode currentPageMode;
+    
+    private:
+        TDT4102::Button startKnapp {{(WINDOW_WIDTH-200)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2+15}, (int)BUTTON_WIDTH, (int)BUTTON_HEIGHT, "Start"};
+        TDT4102::Button creditsKnapp {{(WINDOW_WIDTH-BUTTON_WIDTH)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15 + 50}, BUTTON_WIDTH, BUTTON_HEIGHT, "Takk"};
+        TDT4102::Button tilbakeKnapp {{(WINDOW_WIDTH-BUTTON_WIDTH)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15 + 50+50+30 + TAKKPAGE_YOFFSET}, BUTTON_WIDTH, BUTTON_HEIGHT, "Tilbake"};
+};

@@ -1,10 +1,12 @@
 #include "std_lib_facilities.h"
-#include "mainPage.h"
+#include "laserTurtleWindow.h"
 
 int main() {
-    //PointCannonAt(500, 300);
+    LTWindow ltw;
+    while (!ltw.should_close()){
+        ltw.updateFrame();
+    }
 
-    openMainPage();
     return 0;
 }
 

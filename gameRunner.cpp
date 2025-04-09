@@ -46,6 +46,7 @@ void runGame(TDT4102::AnimationWindow& window){
         getCharInput(window, typeText);
         window.next_frame();
     }
+    
     cout << "Spill over" << endl;
 }
 
