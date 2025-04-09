@@ -33,7 +33,6 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
         if((!isKeyPressed || prevKey != KeyboardKey::BACKSPACE) && !typeText.empty()){
             typeText = "";
         }
-        
         prevKey = KeyboardKey::BACKSPACE;
         isKeyPressed = true;
         return;
@@ -45,11 +44,19 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     for (const auto& [key, value] : keyMap) { 
         if (window.is_key_down(key)) {
             if (!isKeyPressed || key != prevKey){
-                typeText += value;
+                try{
+                    typeText += value;
+                    if (typeText == "HEIL HITLER"){
+                        throw(88);
+                    }
 
                 // Her sjekker vi om det brukeren har skrevet inn matcher med noen av 
                 // bombene i lufta. Da resettes innholdet i typeText
                 if (checkIfGuessIsCorrect(typeText)){ 
+                    typeText = "";
+                }
+                }
+                catch(int errMess){
                     typeText = "";
                 }
             }
