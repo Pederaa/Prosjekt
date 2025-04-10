@@ -1,1 +1,32 @@
-Prosjekt til emnet TDT4102 Prosedyre og Objektorientert programmering. 
+# Prosjekt til emnet TDT4102 Prosedyre og Objektorientert programmering. 
+Dette prosjektet er et spill som går ut på å besvare bla. mattespørsmål for å prenge bomber før de eksploderer eggene til en skilpadde. Ideen er ikke original, men basert på minner av et liknende spill jeg spilte da jeg var yngre. 
+
+Programmet starter med å lage en instanse av klassen LaserTurtleWindow. Denne klassen arver fra AnimationWindow og har knappene programmet bruker i tillegg til egne funksjoner. Deretter går den inn i en while-løkke og blir der til programmet stopper. 
+
+Inne i while-løkka vil koden sjekke hvilken pageMode (egendefiert enum class) den er i. Knappene gir brukeren mulighet til å bytte mellom de forskjellige pageModene. 
+
+Dersom den er i "playing", vil koden definere alle variablene som kreves for å lage spillet, og gå inn i en ny while-løkke. Inne i denne skjer det ting i en viss rekkefølge. Ting som tegnes senere tegnes på toppen av det som var der:
+- addBombs: her ligger logikken for om bomber skal legges til eller ikke. 
+- drawBackground: tegner bakgrunnen. 
+- drawBombs: tegner bombene som er i lufta
+- drawEggs: tegner eggene sim fortsatt er der
+- drawLasers: tegner laseranimasjonene som fortsatt er aktive
+- laser.drawCannon: tegner laserkanonen 
+- drawTurtle: tegner den søte skilpadden :)
+- drawExplotions: tegner eksplosjonsanimasjonene som fortsatt er aktive
+- drawTypingScreen: tegner skjermen som viser hva det er brukeren har skrevet inn så langt.
+- getCharInput: leser av hvilke taster brukeren har trykket inn, og styrer logikken assosiert med det. 
+
+
+Mer informasjon om funksjonene finnes i definisjonene. 
+
+
+
+## Bruk av KI og andre hjelpemidler
+ChatGPT
+- Logoen på forsiden
+- Genererte unordered_mappet i fila "readKeyInput.cpp"
+
+Grafikk
+- Skilpadden er laget av Yuliya Pauliukevich (klyaksun) fra Vecteezy.com
+- Eksplosjonssanimasjonene er laget av M DANIEL (danilcool78457001) fra Vecteezy.com
