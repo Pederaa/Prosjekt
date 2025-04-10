@@ -51,7 +51,6 @@ void runGame(LTWindow& window){
         drawTypingScreen(window, typeText);
         getCharInput(window, typeText);
 
-        cout << delayEndFrames << endl;
         checkIfGameOver(window, gameOver);
 
         window.next_frame();
@@ -62,7 +61,7 @@ void runGame(LTWindow& window){
 
 int bombaddingIterator = 0;
 void addBombs(std::default_random_engine& generator, vector<int> lanes){
-    if (bombsSpawned < 5){
+    if (bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
             bombsSpawned++;
             if (generator()%2 == 0){
@@ -175,12 +174,12 @@ void drawTurtle(TDT4102::AnimationWindow& window){
 }
 
 void checkIfGameOver(LTWindow& window, bool& gameOver){
-    if(lanes.size() == 0){
+    if(lanes.size() == 0 && delayEndFrames >= 30){
         gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;
     }
-    else if(bombsSpawned > 5 && bombs.size() == 0 && delayEndFrames >= 30){
+    else if(bombsSpawned >= MAX_NUMBER_OF_BOMBS && bombs.size() == 0 && delayEndFrames >= 30){
         gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;
