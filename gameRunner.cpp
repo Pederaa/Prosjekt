@@ -13,6 +13,7 @@
 #include "explotionManager.h"
 #include <random>
 #include "constants.h"
+#include "LaserTurtleWindow.h"
 
 std::list<Bomb> bombs;
 std::list<Explotion> explotions;
@@ -21,8 +22,10 @@ laserCannon l(1,2);
 
 constexpr int n = sizeof(BEGIN_LANES)/sizeof(int);
 vector<int> lanes;
+static int bombsSpawned = 0;
+static int delayEndFrames = 0;
 
-void runGame(TDT4102::AnimationWindow& window){
+void runGame(LTWindow& window){
     random_device rd;
     default_random_engine generator(rd());
     std::string typeText = "";
@@ -33,7 +36,10 @@ void runGame(TDT4102::AnimationWindow& window){
     l.setBaseposition(LASER_CANNON_X, LASER_CANNON_Y);
     l.pointCannonUp();
 
-    while(!window.should_close()){
+    bool gameOver = false;
+    bombsSpawned = 0;
+    delayEndFrames = 0;
+    while(!window.should_close() && !gameOver){
         addBombs(generator, lanes);
         drawBackground(window);
         drawBombs(window);
@@ -44,6 +50,10 @@ void runGame(TDT4102::AnimationWindow& window){
         drawExplotions(window);
         drawTypingScreen(window, typeText);
         getCharInput(window, typeText);
+
+        cout << delayEndFrames << endl;
+        checkIfGameOver(window, gameOver);
+
         window.next_frame();
     }
     
@@ -52,22 +62,28 @@ void runGame(TDT4102::AnimationWindow& window){
 
 int bombaddingIterator = 0;
 void addBombs(std::default_random_engine& generator, vector<int> lanes){
-    if (bombaddingIterator == 80){
-
-        if (generator()%2 == 0){
-            textBomb newBomb = textBomb(lanes);
-            bombs.push_back(newBomb);
-            bombaddingIterator = 0;
-            return;
-        } else{
-            numBomb newBomb = numBomb(lanes);
-            bombs.push_back(newBomb);
-            bombaddingIterator = 0;
-            return;
+    if (bombsSpawned < 5){
+        if (bombaddingIterator == 80){
+            bombsSpawned++;
+            if (generator()%2 == 0){
+                textBomb newBomb = textBomb(lanes);
+                bombs.push_back(newBomb);
+                bombaddingIterator = 0;
+                return;
+            } else{
+                numBomb newBomb = numBomb(lanes);
+                bombs.push_back(newBomb);
+                bombaddingIterator = 0;
+                return;
+            }
+        }
+        bombaddingIterator++;
+    }
+    else{
+        if (bombs.size() == 0){
+            delayEndFrames++;
         }
     }
-
-    bombaddingIterator++;
 }
 
 void drawBombs(TDT4102::AnimationWindow& window){
@@ -156,4 +172,17 @@ static TDT4102::Image turtle = TDT4102::Image("images/turtle_image.png");
 void drawTurtle(TDT4102::AnimationWindow& window){
     window.draw_image({l.getBasePosition().x + TURTLE_XOFFSET, l.getBasePosition().y + TURTLE_YOFFSET},
                          turtle, TURTLE__SIZE, TURTLE__SIZE);
+}
+
+void checkIfGameOver(LTWindow& window, bool& gameOver){
+    if(lanes.size() == 0){
+        gameOver = true;
+        window.currentPageMode = pageMode::frontpage;
+        return;
+    }
+    else if(bombsSpawned > 5 && bombs.size() == 0 && delayEndFrames >= 30){
+        gameOver = true;
+        window.currentPageMode = pageMode::frontpage;
+        return;
+    }
 }
