@@ -8,7 +8,14 @@ Inne i while-løkka vil koden sjekke hvilken pageMode (egendefiert enum class) d
 - Takkesiden. En side som takker alle tredjeparter til prosjektet. Inneholder en knapp som tar spilleren tilbake til Startsiden.
 - Spillesiden. Her er det spillet faktisk kjører. 
 
-Dersom den er i "playing", vil koden definere alle variablene som kreves for å lage spillet, og gå inn i en ny while-løkke. Inne i denne kalles en rekke funksjoner i en viss rekkefølge. Ting som tegnes senere tegnes på toppen av det som var der:
+Dersom den er i "playing", vil koden definere alle variablene som kreves for å lage spillet, og gå inn i en ny while-løkke. Variablene som defineres er:
+- Liste for alle bombene som er i 
+- Liste for eksplosjonensanimasjonene i lufta
+- Liste for laseranimasjonene i lufta
+- Instanse av laserCannon
+- String for å lagre det brukeren har skrevet inn
+
+Inne i denne kalles en rekke funksjoner i en viss rekkefølge. Ting som tegnes senere tegnes på toppen av det som var der:
 - addBombs: her ligger logikken for om bomber skal legges til eller ikke. 
 - drawBackground: tegner bakgrunnen. 
 - drawBombs: tegner bombene som er i lufta
@@ -19,7 +26,6 @@ Dersom den er i "playing", vil koden definere alle variablene som kreves for å 
 - drawExplotions: tegner eksplosjonsanimasjonene som fortsatt er aktive
 - drawTypingScreen: tegner skjermen som viser hva det er brukeren har skrevet inn så langt.
 - getCharInput: leser av hvilke taster brukeren har trykket inn, og styrer logikken assosiert med det. 
-
 
 
 ## Bruk av KI og andre hjelpemidler
