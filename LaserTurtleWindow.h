@@ -22,6 +22,7 @@ class LTWindow : public TDT4102::AnimationWindow {
         void updateFrame();
         pageMode currentPageMode;
         difficulty diff;
+        bool gameOver;
     
     private:
         TDT4102::Button startKnapp {{(WINDOW_WIDTH-200)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2+15}, (int)BUTTON_WIDTH, (int)BUTTON_HEIGHT, "Start"};

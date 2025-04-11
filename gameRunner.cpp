@@ -36,30 +36,51 @@ void runGame(LTWindow& window){
     l.setBaseposition(LASER_CANNON_X, LASER_CANNON_Y);
     l.pointCannonUp();
 
-    bool gameOver = false;
     bombsSpawned = 0;
     delayEndFrames = 0;
-    while(!window.should_close() && !gameOver){
-        addBombs(generator, lanes);
+    while(!window.should_close() && !window.gameOver){
+        cout << "A";
+        addBombs(window, generator, lanes);
+        cout << "B";
         drawBackground(window);
+        cout << "C";
         drawBombs(window);
+        cout << "D";
         drawEggs(window);
+        cout << "E";
         drawLasers(window);
+        cout << "F";
         l.drawCannon(window);
+        cout << "G";
         drawExplotions(window);
+        cout << "H";
         drawTypingScreen(window, typeText);
+        cout << "I";
         getCharInput(window, typeText);
-
-        checkIfGameOver(window, gameOver);
+        cout << "J";
+        checkIfGameOver(window);
+        cout << "K";
 
         window.next_frame();
+        cout << endl;
     }
     
     cout << "Spill over" << endl;
 }
 
 int bombaddingIterator = 0;
-void addBombs(std::default_random_engine& generator, vector<int> lanes){
+void addBombs(LTWindow& window, std::default_random_engine& generator, vector<int> lanes){
+    try{
+        if (lanes.size() == 0){
+            throw(55);
+        }
+    }
+    catch(int x){
+        window.gameOver = true;
+        window.currentPageMode = pageMode::frontpage;
+        return;
+    }
+
     if (bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
             bombsSpawned++;
@@ -165,14 +186,14 @@ void removeLineAtX(int x){
     }
 }
 
-void checkIfGameOver(LTWindow& window, bool& gameOver){
+void checkIfGameOver(LTWindow& window){
     if(lanes.size() == 0 && delayEndFrames >= 30){
-        gameOver = true;
+        window.gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;
     }
     else if(bombsSpawned >= MAX_NUMBER_OF_BOMBS && bombs.size() == 0 && delayEndFrames >= 30){
-        gameOver = true;
+        window.gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;
     }

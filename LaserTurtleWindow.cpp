@@ -55,6 +55,7 @@ void LTWindow::updateFrame(){
 
 LTWindow::LTWindow() : AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME){
     currentPageMode = pageMode::frontpage;
+    gameOver = false;
     //list = TDT4102::DropdownList({100, 100}, 300, 30, difficult);
 
     string path_string = "banned_phrases.txt";
