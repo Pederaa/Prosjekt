@@ -21,8 +21,7 @@ Inne i denne kalles en rekke funksjoner i en viss rekkefølge. Ting som tegnes s
 - drawBombs: tegner bombene som er i lufta
 - drawEggs: tegner eggene sim fortsatt er der
 - drawLasers: tegner laseranimasjonene som fortsatt er aktive
-- laser.drawCannon: tegner laserkanonen 
-- drawTurtle: tegner den søte skilpadden :)
+- laser.drawCannon: tegner laserkanonen og skilpadden :) i riktig retning 
 - drawExplotions: tegner eksplosjonsanimasjonene som fortsatt er aktive
 - drawTypingScreen: tegner skjermen som viser hva det er brukeren har skrevet inn så langt.
 - getCharInput: leser av hvilke taster brukeren har trykket inn, og styrer logikken assosiert med det. 

@@ -39,7 +39,7 @@ constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 #define BOMB_CENTERCORRECTION_Y 50
 
 //Sklpadde
-#define TURTLE__SIZE 200
+#define TURTLE_SIZE 200
 #define TURTLE_XOFFSET -107
 #define TURTLE_YOFFSET -68
 
