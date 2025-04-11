@@ -46,7 +46,6 @@ void runGame(LTWindow& window){
         drawEggs(window);
         drawLasers(window);
         l.drawCannon(window);
-        drawTurtle(window);
         drawExplotions(window);
         drawTypingScreen(window, typeText);
         getCharInput(window, typeText);
@@ -64,7 +63,7 @@ void addBombs(std::default_random_engine& generator, vector<int> lanes){
     if (bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
             bombsSpawned++;
-            if (generator()%1 == 0){
+            if (generator()%QUOTE_PROBABILITY == 0){
                 textBomb newBomb = textBomb(lanes);
                 bombs.push_back(newBomb);
                 bombaddingIterator = 0;
@@ -85,7 +84,7 @@ void addBombs(std::default_random_engine& generator, vector<int> lanes){
     }
 }
 
-void drawBombs(TDT4102::AnimationWindow& window){
+void drawBombs(LTWindow& window){
     /*Her itererer vi over alle blokkelementene. Vi flytter alle et hakk ned 
     og sletter de som har kommet for langt. Her må vi bruke en while-løkke. 
     Mer info: https://www.geeksforgeeks.org/cpp-remove-elements-from-a-list-while-iterating/
@@ -121,7 +120,7 @@ bool checkIfGuessIsCorrect(std::string guess){
     return false;
 }
 
-void drawExplotions(TDT4102::AnimationWindow& window){
+void drawExplotions(LTWindow& window){
     list<Explotion>::iterator it = explotions.begin();
     while (it != explotions.end()){
         bool isExplotionDone = (*it).drawExplotion(window);
@@ -134,7 +133,7 @@ void drawExplotions(TDT4102::AnimationWindow& window){
     }
 }
 
-void drawLasers(TDT4102::AnimationWindow& window){
+void drawLasers(LTWindow& window){
     list<Laser>::iterator it = lasers.begin();
     while (it != lasers.end()){
         bool isLaserDone = (*it).drawLaser(window);
@@ -147,7 +146,7 @@ void drawLasers(TDT4102::AnimationWindow& window){
 }
 
 void removeLineAtX(int x){
-    for (unsigned long long i = 0; i < lanes.size(); i++){
+    for (int i = 0; i < lanes.size(); i++){
         if(lanes.at(i) == x){
             lanes.erase(lanes.begin() + i);
             break;

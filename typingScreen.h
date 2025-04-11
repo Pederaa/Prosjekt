@@ -1,4 +1,5 @@
 #pragma once
 #include "AnimationWindow.h"
+#include "LaserTurtleWindow.h"
 
-void drawTypingScreen(TDT4102::AnimationWindow& window, std::string& c);
+void drawTypingScreen(LTWindow& window, std::string& c);

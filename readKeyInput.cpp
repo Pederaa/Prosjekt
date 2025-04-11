@@ -1,4 +1,3 @@
-#include "AnimationWindow.h"
 #include "std_lib_facilities.h"
 #include "gameRunner.h"
 
@@ -27,11 +26,12 @@ static bool isKeyPressed = false;
 //Variabel som husker hva den forrige nøkkelen som ble trykket var. 
 static KeyboardKey prevKey = KeyboardKey::SPACE;
 
-void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
+void getCharInput(LTWindow& window, std::string& typeText){
     //Backspace er den eneste spesielle tasten. Den sletter siste element i typetext. 
     if (window.is_key_down(KeyboardKey::BACKSPACE)){ 
         if((!isKeyPressed || prevKey != KeyboardKey::BACKSPACE) && !typeText.empty()){
-            typeText = "";
+            typeText.pop_back();
+            checkIfGuessIsCorrect(typeText);
         }
         prevKey = KeyboardKey::BACKSPACE;
         isKeyPressed = true;
@@ -41,13 +41,15 @@ void getCharInput(TDT4102::AnimationWindow& window, std::string& typeText){
     // Her sjekkes alle tastene en etter en i keymappet. Dersom tasten er nede og 
     // den ikke var nede siden sist (eller evt. om det brukeren har trykket på en annen 
     // knapp så raskt at det ikke ble merket) skal tasten legges til
-    for (const auto& [key, value] : keyMap) { 
+    for (const auto& [key, value] : keyMap) {
         if (window.is_key_down(key)) {
             if (!isKeyPressed || key != prevKey){
                 try{
                     typeText += value;
-                    if (typeText == "HEIL HITLER"){
-                        throw(88);
+                    for(string h : window.bannedPhrases){
+                        if (typeText == h){
+                            throw(88);
+                        }
                     }
 
                 // Her sjekker vi om det brukeren har skrevet inn matcher med noen av 

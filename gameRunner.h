@@ -5,10 +5,10 @@
 
 void runGame(LTWindow& window);
 void addBombs(std::default_random_engine& generator, std::vector<int> lanes);
-void drawBombs(TDT4102::AnimationWindow& window);
+void drawBombs(LTWindow& window);
 bool checkIfGuessIsCorrect(std::string guess);
-void drawExplotions(TDT4102::AnimationWindow& window);
-void drawLasers(TDT4102::AnimationWindow& window);
+void drawExplotions(LTWindow& window);
+void drawLasers(LTWindow& window);
 void removeLineAtX(int x);
-void drawTurtle(TDT4102::AnimationWindow& window);
+void drawTurtle(LTWindow& window);
 void checkIfGameOver(LTWindow& window, bool& gameOver);

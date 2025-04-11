@@ -36,16 +36,12 @@ void laserCannon::drawCannon(TDT4102::AnimationWindow& window){
         {endPosition.x + (int)((widht/2)*sin(rotation)), endPosition.y + (int)((widht/2)*cos(rotation))},
         {endPosition.x - (int)((widht/2)*sin(rotation)), endPosition.y - (int)((widht/2)*cos(rotation))},
         Color);
-
-    cout << "{" << basePosition.x + TURTLE_XOFFSET - 20 << ", " << basePosition.y + TURTLE_YOFFSET << "}" << endl;
     
     if (cos(rotation) >= 0){
-        cout << "Right" << endl;
         window.draw_image({basePosition.x + TURTLE_XOFFSET + 15, basePosition.y + TURTLE_YOFFSET}, 
             turtle_right_png, TURTLE_SIZE, TURTLE_SIZE);
     }
     else{
-        cout << "left" << endl;
         window.draw_image({basePosition.x + TURTLE_XOFFSET, basePosition.y + TURTLE_YOFFSET}, 
             turtle_left_png, TURTLE_SIZE, TURTLE_SIZE);
     }

@@ -1,5 +1,6 @@
 #pragma once
 #include "AnimationWindow.h"
+#include "LaserTurtleWindow.h"
 #include "quary.h"
 #include <random>
 #include "constants.h"
@@ -25,7 +26,7 @@ class Bomb{
         int posX();
         int posY();
         std::string Answer();
-        void moveDown(TDT4102::AnimationWindow& window);
-        void drawTekstBoks(TDT4102::AnimationWindow& window);
+        void moveDown(LTWindow& window);
+        void drawTekstBoks(LTWindow& window);
 };
 

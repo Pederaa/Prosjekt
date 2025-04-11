@@ -5,6 +5,7 @@
 #include "std_lib_facilities.h"
 #include "constants.h"
 #include "pageMode.h"
+#include <filesystem>
 
 void LTWindow::startKnappCallback(){
     currentPageMode = pageMode::playing;
@@ -55,6 +56,19 @@ void LTWindow::updateFrame(){
 LTWindow::LTWindow() : AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME){
     currentPageMode = pageMode::frontpage;
     //list = TDT4102::DropdownList({100, 100}, 300, 30, difficult);
+
+    string path_string = "banned_phrases.txt";
+	filesystem::path file_path{path_string}; // Lager et path-objekt som leder til fila. 
+
+	ifstream inputStream{file_path}; // Lager en stream til fila. 
+	if (!inputStream){ //Sjekker om fila eksisterer 
+		throw(2);
+	}
+	string nextPhrase;
+	while (getline(inputStream, nextPhrase)){ // Skriver ut et ord av gangen. Man kan skrive ut en bokstav av gangen ved å endre nextWord til en char. 
+		bannedPhrases.push_back(nextPhrase);
+	}
+    inputStream.close();
 
     startKnapp.setCallback([this](){this->startKnappCallback();});
     startKnapp.setButtonColor(buttonColor);

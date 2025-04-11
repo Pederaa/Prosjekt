@@ -1,11 +1,12 @@
 #include "Bomb.h"
+#include "LaserTurtleWindow.h"
 #include "std_lib_facilities.h"
 #include <random>
-#include "AnimationWindow.h"
 #include <algorithm>
 #include <cctype>
 #include <string>
 #include <quary.h>
+
 
 int Bomb::posY(){
     return this->y;
@@ -19,12 +20,12 @@ std::string Bomb::Answer(){
     return quary.answer;
 }
 
-void Bomb::moveDown(TDT4102::AnimationWindow& window){
+void Bomb::moveDown(LTWindow& window){
     y += speed;
     drawTekstBoks(window);
 }
 
-void Bomb::drawTekstBoks(TDT4102::AnimationWindow& window){
+void Bomb::drawTekstBoks(LTWindow& window){
     window.draw_image({x, y}, image, width, height);
 
     if (quary.question.length() < 4){

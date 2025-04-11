@@ -2,11 +2,15 @@
 #include "std_lib_facilities.h"
 
 // Vindu
-constexpr int WINDOW_WIDTH = 1300; //Bildene skal dimasnjoneres slik at 1 bildepiksel er 2*2 spillpiksler. 
-constexpr int WINDOW_HEIGH = 600;
-constexpr std::string GAME_NAME = "Laserturtle";
+#define WINDOW_WIDTH 1300 //Bildene skal dimasnjoneres slik at 1 bildepiksel er 2*2 spillpiksler. 
+#define WINDOW_HEIGH 600
+#define GAME_NAME "Laserturtle"
 constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 
+
+// Spillets gang
+#define MAX_NUMBER_OF_BOMBS 25
+#define QUOTE_PROBABILITY 8
 
 // Forside
 #define LOGO_SIZE 600
@@ -29,7 +33,6 @@ constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 
 
 //Bomber
-#define MAX_NUMBER_OF_BOMBS 5
 #define BOMB_SPEED 2
 #define BOMB_INITIALY 0
 #define BOMB_HEIGHT 100
@@ -37,6 +40,7 @@ constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 
 #define BOMB_CENTERCORRECTION_X 50
 #define BOMB_CENTERCORRECTION_Y 50
+
 
 //Sklpadde
 #define TURTLE_SIZE 200

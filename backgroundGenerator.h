@@ -1,4 +1,4 @@
 #pragma once
-#include "AnimationWindow.h"
+#include "LaserTurtleWindow.h"
 
-void drawBackground(TDT4102::AnimationWindow& window);
+void drawBackground(LTWindow& window);
