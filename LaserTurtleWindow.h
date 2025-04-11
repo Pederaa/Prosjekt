@@ -16,7 +16,8 @@ class LTWindow : public TDT4102::AnimationWindow {
 
         TDT4102::Image logo = TDT4102::Image("images/updated_logo.png");
         TDT4102::Color buttonColor = TDT4102::Color::silver;
-
+        TDT4102::Color buttonTextColor = TDT4102::Color::black;
+        
         void updateFrame();
         pageMode currentPageMode;
         difficulty diff;
@@ -25,9 +26,6 @@ class LTWindow : public TDT4102::AnimationWindow {
         TDT4102::Button startKnapp {{(WINDOW_WIDTH-200)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2+15}, (int)BUTTON_WIDTH, (int)BUTTON_HEIGHT, "Start"};
         TDT4102::Button creditsKnapp {{(WINDOW_WIDTH-BUTTON_WIDTH)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15 + 50}, BUTTON_WIDTH, BUTTON_HEIGHT, "Takk"};
         std::vector<std::string> difficult {"Barneskole", "Videregående", "TDT4102"};
-        //TDT4102::DropdownList list;
-
-        //TDT4102::DropdownList list({(WINDOW_WIDTH-200)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2+15}, 300, 30, );
 
         TDT4102::Button tilbakeKnapp {{(WINDOW_WIDTH-BUTTON_WIDTH)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2 + 15 + 50+50+30 + TAKKPAGE_YOFFSET}, BUTTON_WIDTH, BUTTON_HEIGHT, "Tilbake"};
     };

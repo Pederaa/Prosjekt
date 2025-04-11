@@ -58,13 +58,16 @@ LTWindow::LTWindow() : AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_N
 
     startKnapp.setCallback([this](){this->startKnappCallback();});
     startKnapp.setButtonColor(buttonColor);
+    startKnapp.setLabelColor(buttonTextColor);
     this->add(startKnapp);
 
     creditsKnapp.setCallback([this](){this->creditsKnappCallback();});
     creditsKnapp.setButtonColor(buttonColor);
+    creditsKnapp.setLabelColor(buttonTextColor);
     this->add(creditsKnapp);
 
     tilbakeKnapp.setCallback([this](){this->tilbakeKnappCallback();});
     tilbakeKnapp.setButtonColor(buttonColor);
+    tilbakeKnapp.setLabelColor(buttonTextColor);
     this->add(tilbakeKnapp);
 }
