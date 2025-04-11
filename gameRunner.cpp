@@ -64,7 +64,7 @@ void addBombs(std::default_random_engine& generator, vector<int> lanes){
     if (bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
             bombsSpawned++;
-            if (generator()%2 == 0){
+            if (generator()%4 == 0){
                 textBomb newBomb = textBomb(lanes);
                 bombs.push_back(newBomb);
                 bombaddingIterator = 0;
@@ -164,13 +164,6 @@ void removeLineAtX(int x){
         }
         it++;
     }
-}
-
-
-static TDT4102::Image turtle = TDT4102::Image("images/turtle_image.png");
-void drawTurtle(TDT4102::AnimationWindow& window){
-    window.draw_image({l.getBasePosition().x + TURTLE_XOFFSET, l.getBasePosition().y + TURTLE_YOFFSET},
-                         turtle, TURTLE__SIZE, TURTLE__SIZE);
 }
 
 void checkIfGameOver(LTWindow& window, bool& gameOver){

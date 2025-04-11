@@ -6,6 +6,9 @@
 
 laserCannon::laserCannon(int posX, int posY){
     basePosition = {posX, posY};
+
+    turtle_left_png = TDT4102::Image("images/turtle_left.png");
+    turtle_right_png = TDT4102::Image("images/turtle_right.png");
 }
 
 void laserCannon::pointCannonAt(int targetX, int targetY){
@@ -25,19 +28,30 @@ void laserCannon::pointCannonUp(){
     endPosition.x = basePosition.x;
     endPosition.y = basePosition.y-length;
     rotation = 3.14/2;
-
-    //cout << rotation << endl;
-    //cout << "{" << endPosition.x << ", " << endPosition.y << "}" << endl;
 }
 
 void laserCannon::drawCannon(TDT4102::AnimationWindow& window){ 
-    //window.draw_line(basePosition, endPosition, Color);
     window.draw_quad(
         {basePosition.x - (int)((widht/2)*sin(rotation)), basePosition.y - (int)((widht/2)*cos(rotation))},
         {basePosition.x + (int)((widht/2)*sin(rotation)), basePosition.y + (int)((widht/2)*cos(rotation))},
         {endPosition.x + (int)((widht/2)*sin(rotation)), endPosition.y + (int)((widht/2)*cos(rotation))},
         {endPosition.x - (int)((widht/2)*sin(rotation)), endPosition.y - (int)((widht/2)*cos(rotation))},
         Color);
+
+
+    window.draw_image({basePosition.x + TURTLE_XOFFSET - 20, basePosition.y + TURTLE_YOFFSET}, 
+        this->turtle_right_png, TURTLE__SIZE, TURTLE__SIZE);
+    /*
+    if (cos(rotation) >= 0){
+        cout << "Right" << endl;
+        window.draw_image({basePosition.x + TURTLE_XOFFSET - 20, basePosition.y + TURTLE_YOFFSET}, 
+            this->turtle_right_png, TURTLE__SIZE, TURTLE__SIZE);
+    }
+    else{
+        cout << "left" << endl;
+        window.draw_image({basePosition.x + TURTLE_XOFFSET, basePosition.y + TURTLE_YOFFSET}, 
+            this->turtle_left_png, TURTLE__SIZE, TURTLE__SIZE);
+    }*/
 }
 
 void laserCannon::setBaseposition(int x, int y){
@@ -73,4 +87,8 @@ bool Laser::drawLaser(TDT4102::AnimationWindow& window){
 
     frameIndex++;
     return false;
+}
+
+void drawTurtle(TDT4102::AnimationWindow& window){
+
 }

@@ -6,6 +6,8 @@ class laserCannon{
     int length = LASER_CANNON_LENGTH;
 
     public:
+        TDT4102::Image turtle_left_png;
+        TDT4102::Image turtle_right_png;
         TDT4102::Point basePosition;
         TDT4102::Point endPosition;
         double rotation = 0;
