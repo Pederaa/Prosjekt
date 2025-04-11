@@ -35,3 +35,9 @@ ChatGPT
 Grafikk
 - Skilpadden er laget av Yuliya Pauliukevich (klyaksun) fra Vecteezy.com
 - Eksplosjonssanimasjonene er laget av M DANIEL (danilcool78457001) fra Vecteezy.com
+
+
+
+
+# Refleksjonsnotat
+Ideen til prosjektet kom før selve kodinga. Deretter var det viktig å implementere den mest grunnleggende funksjonaliteten. Først bombe-klassen, og at de beveget seg riktig, deretter brukerimput for å eksplodere de. Grafikken utviklet seg naturlig underveis. Jeg så det som ville fått spillet til å se betydelig bedre ut. Alle delene ved koden ble gjort iterativt, først å få på plass de viktigste funksjonene, gå videre til noe annet, og komme tilbake dersom det var behov. Det var enkelte ting jeg gjerne skulle fått lagt inn, som forskjellige vanskelighetsgrader, og en sluttscore, men det ble det desverre ikke tid til. Alt i alt har prosjektet tatt en del tid, men har vært gøy. 
