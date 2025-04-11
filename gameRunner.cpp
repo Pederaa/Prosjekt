@@ -64,7 +64,7 @@ void addBombs(std::default_random_engine& generator, vector<int> lanes){
     if (bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
             bombsSpawned++;
-            if (generator()%4 == 0){
+            if (generator()%1 == 0){
                 textBomb newBomb = textBomb(lanes);
                 bombs.push_back(newBomb);
                 bombaddingIterator = 0;

@@ -11,7 +11,7 @@ class textBomb : public Bomb{
 };
 
 static Quary textQuaryArray[] = {
-    Quary("I am vengeance. I am the knight", "I AM BATMAN"),
-    Quary("My name is Inigo Montoya", "YOU KILLED MY FATHER"),
-    Quary("Do or do not", "THERE IS NO TRY"),
+    Quary("I am vengeance. I am the knight ...", "I AM BATMAN"),
+    Quary("My name is Inigo Montoya ...", "YOU KILLED MY FATHER"),
+    Quary("Do or do not ...", "THERE IS NO TRY"),
 };

@@ -60,8 +60,10 @@ void Bomb::drawTekstBoks(TDT4102::AnimationWindow& window){
         }
         g.push_back(quary.question.substr(prevIndex, spaces[numOfSpaces]-spaces[numOfSpaces-1]));
 
+        int y_center = y+50;
+        int y_top = y_center - 14*g.size()/2;
         for (int i =0; i < g.size(); i++){
-            window.draw_text({x+15, y+17+i*14}, g.at(i), textColor, 15, textFont);
+            window.draw_text({x+15, y_top+i*14}, g.at(i), textColor, 15, textFont);
         }
 
         return;
