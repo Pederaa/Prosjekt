@@ -23,6 +23,8 @@ class LTWindow : public TDT4102::AnimationWindow {
         pageMode currentPageMode;
         difficulty diff;
         bool gameOver;
+        int bombsSpawned;
+        int delayEndFrames;
     
     private:
         TDT4102::Button startKnapp {{(WINDOW_WIDTH-200)/2, (WINDOW_HEIGH-BUTTON_HEIGHT)/2+15}, (int)BUTTON_WIDTH, (int)BUTTON_HEIGHT, "Start"};

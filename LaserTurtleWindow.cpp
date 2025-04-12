@@ -56,7 +56,8 @@ void LTWindow::updateFrame(){
 LTWindow::LTWindow() : AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME){
     currentPageMode = pageMode::frontpage;
     gameOver = false;
-    //list = TDT4102::DropdownList({100, 100}, 300, 30, difficult);
+    bombsSpawned = 0;
+    delayEndFrames = 0;
 
     string path_string = "banned_phrases.txt";
 	filesystem::path file_path{path_string}; // Lager et path-objekt som leder til fila. 

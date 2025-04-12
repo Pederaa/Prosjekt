@@ -22,8 +22,6 @@ laserCannon l(1,2);
 
 constexpr int n = sizeof(BEGIN_LANES)/sizeof(int);
 vector<int> lanes;
-static int bombsSpawned = 0;
-static int delayEndFrames = 0;
 
 void runGame(LTWindow& window){
     random_device rd;
@@ -36,30 +34,19 @@ void runGame(LTWindow& window){
     l.setBaseposition(LASER_CANNON_X, LASER_CANNON_Y);
     l.pointCannonUp();
 
-    bombsSpawned = 0;
-    delayEndFrames = 0;
+    window.bombsSpawned = 0;
+    window.delayEndFrames = 0;
     while(!window.should_close() && !window.gameOver){
-        cout << "A";
         addBombs(window, generator, lanes);
-        cout << "B";
         drawBackground(window);
-        cout << "C";
         drawBombs(window);
-        cout << "D";
         drawEggs(window);
-        cout << "E";
         drawLasers(window);
-        cout << "F";
         l.drawCannon(window);
-        cout << "G";
         drawExplotions(window);
-        cout << "H";
         drawTypingScreen(window, typeText);
-        cout << "I";
         getCharInput(window, typeText);
-        cout << "J";
         checkIfGameOver(window);
-        cout << "K";
 
         window.next_frame();
         cout << endl;
@@ -81,9 +68,9 @@ void addBombs(LTWindow& window, std::default_random_engine& generator, vector<in
         return;
     }
 
-    if (bombsSpawned < MAX_NUMBER_OF_BOMBS){
+    if (window.bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
-            bombsSpawned++;
+            window.bombsSpawned++;
             if (generator()%QUOTE_PROBABILITY == 0){
                 textBomb newBomb = textBomb(lanes);
                 bombs.push_back(newBomb);
@@ -100,7 +87,7 @@ void addBombs(LTWindow& window, std::default_random_engine& generator, vector<in
     }
     else{
         if (bombs.size() == 0){
-            delayEndFrames++;
+            window.delayEndFrames++;
         }
     }
 }
@@ -187,12 +174,12 @@ void removeLineAtX(int x){
 }
 
 void checkIfGameOver(LTWindow& window){
-    if(lanes.size() == 0 && delayEndFrames >= 30){
+    if(lanes.size() == 0 && window.delayEndFrames >= 30){
         window.gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;
     }
-    else if(bombsSpawned >= MAX_NUMBER_OF_BOMBS && bombs.size() == 0 && delayEndFrames >= 30){
+    else if(window.bombsSpawned >= MAX_NUMBER_OF_BOMBS && bombs.size() == 0 && window.delayEndFrames >= 30){
         window.gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;
