@@ -9,7 +9,7 @@ constexpr int BEGIN_LANES[] = {100, 400, 800, 1100};
 
 
 // Spillets gang
-#define MAX_NUMBER_OF_BOMBS 25
+#define MAX_NUMBER_OF_BOMBS 4
 #define QUOTE_PROBABILITY 8
 
 // Forside

@@ -36,6 +36,7 @@ void runGame(LTWindow& window){
 
     window.bombsSpawned = 0;
     window.delayEndFrames = 0;
+    window.gameOver = false;
     while(!window.should_close() && !window.gameOver){
         addBombs(window, generator, lanes);
         drawBackground(window);
@@ -51,20 +52,12 @@ void runGame(LTWindow& window){
         window.next_frame();
         cout << endl;
     }
-    
     cout << "Spill over" << endl;
 }
 
 int bombaddingIterator = 0;
 void addBombs(LTWindow& window, std::default_random_engine& generator, vector<int> lanes){
-    try{
-        if (lanes.size() == 0){
-            throw(55);
-        }
-    }
-    catch(int x){
-        window.gameOver = true;
-        window.currentPageMode = pageMode::frontpage;
+    if(lanes.size() == 0){
         return;
     }
 
@@ -174,7 +167,7 @@ void removeLineAtX(int x){
 }
 
 void checkIfGameOver(LTWindow& window){
-    if(lanes.size() == 0 && window.delayEndFrames >= 30){
+    if(lanes.size() == 0){
         window.gameOver = true;
         window.currentPageMode = pageMode::frontpage;
         return;

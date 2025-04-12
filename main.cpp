@@ -6,7 +6,5 @@ int main() {
     while (!ltw.should_close()){
         ltw.updateFrame();
     }
-
     return 0;
 }
-
