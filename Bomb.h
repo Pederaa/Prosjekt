@@ -20,6 +20,7 @@ class Bomb{
         TDT4102::Image image = TDT4102::Image("images/bomb2.png");
 
         Quary quary = Quary("x", "y");
+        random_device rd;
 
         Bomb();
         Bomb(std::vector<int> lanes);

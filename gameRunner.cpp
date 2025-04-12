@@ -24,8 +24,6 @@ constexpr int n = sizeof(BEGIN_LANES)/sizeof(int);
 vector<int> lanes;
 
 void runGame(LTWindow& window){
-    random_device rd;
-    default_random_engine generator(rd());
     std::string typeText = "";
 
     copy(&BEGIN_LANES[0], &BEGIN_LANES[n], back_inserter(lanes));
@@ -38,7 +36,7 @@ void runGame(LTWindow& window){
     window.delayEndFrames = 0;
     window.gameOver = false;
     while(!window.should_close() && !window.gameOver){
-        addBombs(window, generator, lanes);
+        addBombs(window, lanes);
         drawBackground(window);
         drawBombs(window);
         drawEggs(window);
@@ -56,7 +54,7 @@ void runGame(LTWindow& window){
 }
 
 int bombaddingIterator = 0;
-void addBombs(LTWindow& window, std::default_random_engine& generator, vector<int> lanes){
+void addBombs(LTWindow& window, vector<int> lanes){
     if(lanes.size() == 0){
         return;
     }
@@ -64,7 +62,7 @@ void addBombs(LTWindow& window, std::default_random_engine& generator, vector<in
     if (window.bombsSpawned < MAX_NUMBER_OF_BOMBS){
         if (bombaddingIterator == 80){
             window.bombsSpawned++;
-            if (generator()%QUOTE_PROBABILITY == 0){
+            if (window.randInt()%QUOTE_PROBABILITY == 0){
                 textBomb newBomb = textBomb(lanes);
                 bombs.push_back(newBomb);
                 bombaddingIterator = 0;

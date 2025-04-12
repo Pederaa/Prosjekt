@@ -87,3 +87,8 @@ LTWindow::LTWindow() : AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_N
     tilbakeKnapp.setLabelColor(buttonTextColor);
     this->add(tilbakeKnapp);
 }
+
+int LTWindow::randInt(){
+	default_random_engine generator(rd());
+    return generator();
+}

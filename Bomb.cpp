@@ -72,5 +72,4 @@ void Bomb::drawTekstBoks(LTWindow& window){
 }
 
 Bomb::Bomb(){
-    //image = TDT4102::Image("images/bomb2.png"); 
 }

@@ -18,7 +18,12 @@ class LTWindow : public TDT4102::AnimationWindow {
         TDT4102::Color buttonColor = TDT4102::Color::silver;
         TDT4102::Color buttonTextColor = TDT4102::Color::black;
         vector<string> bannedPhrases;
-        
+
+        int randInt();
+        random_device rd;
+        default_random_engine g;
+
+
         void updateFrame();
         pageMode currentPageMode;
         difficulty diff;

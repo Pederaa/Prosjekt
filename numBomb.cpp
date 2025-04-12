@@ -10,7 +10,6 @@ numBomb::numBomb(std::vector<int> lanes){
 }
 
 Quary numBomb::getSingleDigitPositiveNumQuestion(){
-    random_device rd;
     default_random_engine generator(rd());
 
     int a = generator()%10+1;
