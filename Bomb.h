@@ -22,7 +22,7 @@ class Bomb{
         Quary quary = Quary("x", "y");
         random_device rd;
 
-        //Bomb();
+        Bomb();
         Bomb(std::vector<int> lanes);
         int posX();
         int posY();

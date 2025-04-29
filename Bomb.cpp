@@ -71,6 +71,6 @@ void Bomb::drawTekstBoks(LTWindow& window){
     }
 }
 
-/*
+
 Bomb::Bomb(){
-}*/
+}
