@@ -1,4 +1,3 @@
-#include "AnimationWindow.h"
 #include "std_lib_facilities.h"
 #include "gameRunner.h"
 #include "Bomb.h"
@@ -145,7 +144,7 @@ void drawLasers(LTWindow& window){
 }
 
 void removeLineAtX(int x){
-    for (int i = 0; i < lanes.size(); i++){
+    for (auto i = 0; i < lanes.size(); i++){
         if(lanes.at(i) == x){
             lanes.erase(lanes.begin() + i);
             break;

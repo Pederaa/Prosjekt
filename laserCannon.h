@@ -32,6 +32,6 @@ class Laser{
     int maxIndex = LASER_MAXFRAME_INDEX;
 
     public:
-        Laser(laserCannon cannon, Bomb bomb);
+        Laser(laserCannon cannon, Bomb& bomb);
         bool drawLaser(TDT4102::AnimationWindow& window);
 };

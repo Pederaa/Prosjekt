@@ -60,7 +60,7 @@ int laserCannon::Length(){
     return length;
 }
 
-Laser::Laser(laserCannon cannon, Bomb bomb){
+Laser::Laser(laserCannon cannon, Bomb& bomb){
     basePosition = cannon.basePosition;
     endPosition = {bomb.posX()+BOMB_CENTERCORRECTION_X, bomb.posY()+BOMB_CENTERCORRECTION_Y};
     rotation = std::atan2(basePosition.y - endPosition.y, endPosition.x - basePosition.x);
