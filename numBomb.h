@@ -6,5 +6,6 @@
 class numBomb : public Bomb {
     public:
         numBomb(std::vector<int> lanes);
+        ~numBomb(){};
         Quary getSingleDigitPositiveNumQuestion();
 };

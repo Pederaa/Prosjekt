@@ -24,6 +24,7 @@ class Bomb{
 
         Bomb();
         Bomb(std::vector<int> lanes);
+        virtual ~Bomb(){};
         int posX();
         int posY();
         std::string Answer();

@@ -21,7 +21,7 @@ std::string Bomb::Answer(){
 }
 
 void Bomb::moveDown(LTWindow& window){
-    y += speed;
+    this->y += speed;
     drawTekstBoks(window);
 }
 
@@ -70,7 +70,6 @@ void Bomb::drawTekstBoks(LTWindow& window){
         return;
     }
 }
-
 
 Bomb::Bomb(){
 }

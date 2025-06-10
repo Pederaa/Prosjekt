@@ -7,6 +7,7 @@ class textBomb : public Bomb{
     public:
         random_device rd;
         textBomb(std::vector<int> lanes);
+        ~textBomb(){};
         Quary getTextQuary();
 };
 

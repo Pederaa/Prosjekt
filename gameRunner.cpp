@@ -14,7 +14,7 @@
 #include "constants.h"
 #include "LaserTurtleWindow.h"
 
-std::list<Bomb> bombs;
+std::list<std::unique_ptr<Bomb>> bombs;
 std::list<Explotion> explotions;
 std::list<Laser> lasers;
 laserCannon l(1,2);
@@ -62,13 +62,11 @@ void addBombs(LTWindow& window, vector<int> lanes){
         if (bombaddingIterator == 80){
             window.bombsSpawned++;
             if (window.randInt()%QUOTE_PROBABILITY == 0){
-                textBomb newBomb = textBomb(lanes);
-                bombs.push_back(newBomb);
+                bombs.emplace_back(std::make_unique<textBomb>(lanes));
                 bombaddingIterator = 0;
                 return;
             } else{
-                numBomb newBomb = numBomb(lanes);
-                bombs.push_back(newBomb);
+                bombs.emplace_back(std::make_unique<numBomb>(lanes));
                 bombaddingIterator = 0;
                 return;
             }
@@ -87,12 +85,12 @@ void drawBombs(LTWindow& window){
     og sletter de som har kommet for langt. Her må vi bruke en while-løkke. 
     Mer info: https://www.geeksforgeeks.org/cpp-remove-elements-from-a-list-while-iterating/
     */
-    list<Bomb>::iterator it = bombs.begin();
+    auto it = bombs.begin();
     while (it != bombs.end()){
-        (*it).moveDown(window);
-        if ((*it).posY() >= getHeightOfeggs() - 100){
-            explotions.push_back(Explotion((*it).posX(), (*it).posY()));
-            damageEggAtXPosition((*it).posX());
+        (**(it)).moveDown(window);
+        if ((*(*it)).posY() >= getHeightOfeggs() - 100){
+            explotions.push_back(Explotion((**it).posX(), (**it).posY()));
+            damageEggAtXPosition((**it).posX());
             it = bombs.erase(it);
             continue;
         }
@@ -107,10 +105,10 @@ bool checkIfGuessIsCorrect(std::string guess){
 
     // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne den som passer
     for (auto it = bombs.begin(); it != bombs.end(); it++){
-        if(guess == (*it).Answer()){
-            l.pointCannonAt((*it).posX(), (*it).posY());
-            explotions.push_back(Explotion((*it).posX(), (*it).posY()));
-            lasers.push_back(Laser(l, (*it)));
+        if(guess == (**it).Answer()){
+            l.pointCannonAt((**it).posX(), (**it).posY());
+            explotions.push_back(Explotion((**it).posX(), (**it).posY()));
+            lasers.push_back(Laser(l, (**it)));
             bombs.erase(it);
             return true;
         }
@@ -153,9 +151,9 @@ void removeLineAtX(int x){
 
     auto it = bombs.begin();
     while (it != bombs.end()){
-        if ((*it).posX() == x - 50){
-            explotions.push_back(Explotion((*it).posX(), (*it).posY()));
-            eraseEgg((*it).posX());
+        if ((**it).posX() == x - 50){
+            explotions.push_back(Explotion((**it).posX(), (**it).posY()));
+            eraseEgg((**it).posX());
             it = bombs.erase(it);
             continue;
         }
