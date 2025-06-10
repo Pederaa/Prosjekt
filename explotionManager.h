@@ -1,6 +1,9 @@
 #pragma once
 #include "AnimationWindow.h"
 #include "constants.h"
+#include "std_lib_facilities.h"
+#include "LaserTurtleWindow.h"
+#include <list>
 
 class Explotion{
     int x;
@@ -18,4 +21,16 @@ class Explotion{
     public:
         Explotion(int xPos, int yPos);
         bool drawExplotion(TDT4102::AnimationWindow& window);
+};
+
+class Explotions {
+    std::list<Explotion> explotions;
+
+    public:
+        void drawExplotions(LTWindow& window);
+
+        auto begin() {return explotions.begin();}
+        auto end() {return explotions.end();}
+        auto erase(auto it) {return explotions.erase(it);}
+        void push_back(Explotion ex) {explotions.push_back(ex);}
 };

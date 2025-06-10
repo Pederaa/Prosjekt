@@ -15,7 +15,7 @@
 #include "LaserTurtleWindow.h"
 
 std::list<std::unique_ptr<Bomb>> bombs;
-std::list<Explotion> explotions;
+Explotions explotions;
 std::list<Laser> lasers;
 laserCannon l(1,2);
 
@@ -41,7 +41,7 @@ void runGame(LTWindow& window){
         drawEggs(window);
         drawLasers(window);
         l.drawCannon(window);
-        drawExplotions(window);
+        explotions.drawExplotions(window);
         drawTypingScreen(window, typeText);
         getCharInput(window, typeText);
         checkIfGameOver(window);
@@ -114,19 +114,6 @@ bool checkIfGuessIsCorrect(std::string guess){
         }
     }
     return false;
-}
-
-void drawExplotions(LTWindow& window){
-    list<Explotion>::iterator it = explotions.begin();
-    while (it != explotions.end()){
-        bool isExplotionDone = (*it).drawExplotion(window);
-
-        if (isExplotionDone){
-            it = explotions.erase(it);
-            continue;
-        }
-        it++;
-    }
 }
 
 void drawLasers(LTWindow& window){

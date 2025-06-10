@@ -1,5 +1,7 @@
 #include "explotionManager.h"
 #include "std_lib_facilities.h"
+#include "LaserTurtleWindow.h"
+#include "AnimationWindow.h"
 
 Explotion::Explotion(int posX, int posY){
     x = posX-20;
@@ -32,8 +34,20 @@ bool Explotion::drawExplotion(TDT4102::AnimationWindow& window){
     else {
         window.draw_image({x, y}, frame7, EXPLOTION_WIDTH, EXPLOTION_HEIGHT);
     }
-        
 
     frameIndex++;
     return false;
+}
+
+void Explotions::drawExplotions(LTWindow& window){
+    auto it = this->begin();
+    while (it != this->end()){
+        bool isExplotionDone = (*it).drawExplotion(window);
+
+        if (isExplotionDone){
+            it = this->erase(it);
+            continue;
+        }
+        it++;
+    }
 }
