@@ -11,9 +11,9 @@ class Egg{
         int hp = EGGS_MAXHP;
         Egg();
         Egg(int xPos);
-        void removeHP();
-        int posY();
-        int posX();
+        void removeHP(){hp--;};
+        int get_x(){return x;};
+        int get_y(){return y;};
         void drawEgg(TDT4102::AnimationWindow& window);
 };
 

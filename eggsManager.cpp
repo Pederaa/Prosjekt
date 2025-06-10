@@ -7,18 +7,6 @@ Egg::Egg(int xPos){
     x = xPos;
 }
 
-void Egg::removeHP(){
-    hp--;
-}
-
-int Egg::posY(){
-    return y;
-}
-
-int Egg::posX(){
-    return x;
-}
-
 void Egg::drawEgg(TDT4102::AnimationWindow& window){
     switch(hp){
         case 3:
@@ -60,13 +48,13 @@ void drawEggs(TDT4102::AnimationWindow& window){
 }
 
 int getHeightOfeggs(){
-    return eggs.front().posY();
+    return eggs.front().get_y();
 }
 
 void damageEggAtXPosition(int x){
     auto it = eggs.begin();
     while (it != eggs.end()){
-        if ((*it).posX() == x + 50){
+        if ((*it).get_x() == x + 50){
             (*it).removeHP();
             break;
         }
@@ -77,7 +65,7 @@ void damageEggAtXPosition(int x){
 void eraseEgg(int x){
     //cout << "Slett egg" << endl;
     for (int i = 0; i < eggs.size(); i++){
-        if(eggs.at(i).posX() == x - 50){
+        if(eggs.at(i).get_x() == x - 50){
             eggs.erase(eggs.begin() + i);
             return;
         }

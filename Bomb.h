@@ -25,8 +25,8 @@ class Bomb{
         Bomb();
         Bomb(std::vector<int> lanes);
         virtual ~Bomb(){};
-        int posX();
-        int posY();
+        int get_x(){return x;};
+        int get_y(){return y;};
         std::string Answer();
         void moveDown(LTWindow& window);
         void drawTekstBoks(LTWindow& window);

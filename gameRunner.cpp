@@ -88,9 +88,9 @@ void drawBombs(LTWindow& window){
     auto it = bombs.begin();
     while (it != bombs.end()){
         (**(it)).moveDown(window);
-        if ((*(*it)).posY() >= getHeightOfeggs() - 100){
-            explotions.push_back(Explotion((**it).posX(), (**it).posY()));
-            damageEggAtXPosition((**it).posX());
+        if ((*(*it)).get_y() >= getHeightOfeggs() - 100){
+            explotions.push_back(Explotion((**it).get_x(), (**it).get_y()));
+            damageEggAtXPosition((**it).get_x());
             it = bombs.erase(it);
             continue;
         }
@@ -106,8 +106,8 @@ bool checkIfGuessIsCorrect(std::string guess){
     // Her går det fint med en for-løkke siden vi går ut av løkka med en gang den finne den som passer
     for (auto it = bombs.begin(); it != bombs.end(); it++){
         if(guess == (**it).Answer()){
-            l.pointCannonAt((**it).posX(), (**it).posY());
-            explotions.push_back(Explotion((**it).posX(), (**it).posY()));
+            l.pointCannonAt((**it).get_x(), (**it).get_y());
+            explotions.push_back(Explotion((**it).get_x(), (**it).get_y()));
             lasers.push_back(Laser(l, (**it)));
             bombs.erase(it);
             return true;
@@ -138,9 +138,9 @@ void removeLineAtX(int x){
 
     auto it = bombs.begin();
     while (it != bombs.end()){
-        if ((**it).posX() == x - 50){
-            explotions.push_back(Explotion((**it).posX(), (**it).posY()));
-            eraseEgg((**it).posX());
+        if ((**it).get_x() == x - 50){
+            explotions.push_back(Explotion((**it).get_x(), (**it).get_y()));
+            eraseEgg((**it).get_x());
             it = bombs.erase(it);
             continue;
         }

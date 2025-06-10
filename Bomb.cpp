@@ -7,15 +7,6 @@
 #include <string>
 #include <quary.h>
 
-
-int Bomb::posY(){
-    return this->y;
-}
-
-int Bomb::posX(){
-    return this->x;
-}
-
 std::string Bomb::Answer(){
     return quary.answer;
 }
