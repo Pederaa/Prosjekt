@@ -1,5 +1,4 @@
 #pragma once
-#include "AnimationWindow.h"
 #include "constants.h"
 
 class Egg{

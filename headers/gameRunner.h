@@ -1,6 +1,7 @@
 #pragma once
 #include <random>
-#include "headers/LaserTurtleWindow.h"
+#include "LaserTurtleWindow.h"
+#include "std_lib_facilities.h"
 
 void runGame(LTWindow& window);
 void addBombs(LTWindow& window, std::vector<int> lanes);

@@ -1,7 +1,5 @@
 #include "headers/LaserTurtleWindow.h"
 #include "headers/gameRunner.h"
-// #include "headers/AnimationWindow.h"
-// #include "widgets/Button.h"
 #include "headers/std_lib_facilities.h"
 #include "headers/constants.h"
 #include "headers/pageMode.h"
@@ -53,7 +51,7 @@ void LTWindow::updateFrame(){
     this->next_frame();
 }
 
-LTWindow::LTWindow() : AnimationWindow(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME){
+LTWindow::LTWindow() : sf::Window(0, 30, WINDOW_WIDTH, WINDOW_HEIGH, GAME_NAME){
     currentPageMode = pageMode::frontpage;
     gameOver = false;
     bombsSpawned = 0;

@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:\\Users\\Peder\\OneDrive - NTNU\\Dokumenter\\Områder\\Studier\\2025 Vår\\Cpp\\Prosjekt\\headers"
+                "C:\\Users\\Peder\\OneDrive - NTNU\\Dokumenter\\Områder\\Studier\\2025 Vår\\Cpp\\Prosjekt\\headers",
+                "C:\\Users\\Peder\\OneDrive - NTNU\\Skrivebord\\SFML-3.0.2-windows-vc17-64-bit\\SFML-3.0.2\\include"
             ],
             "defines": [
                 "_DEBUG",

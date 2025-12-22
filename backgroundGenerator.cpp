@@ -1,7 +1,7 @@
-#include "LaserTurtleWindow.h"
-#include "AnimationWindow.h"
-#include "backgroundGenerator.h"
+#include "headers/LaserTurtleWindow.h"
+#include "headers/backgroundGenerator.h"
 
+/*
 TDT4102::Image image("images/newbackgraund.png");
 void drawBackground(LTWindow& window){
     //TDT4102::Color grassColor = TDT4102::Color::green;
@@ -9,4 +9,4 @@ void drawBackground(LTWindow& window){
 
     TDT4102::Point topLeftCorner {0, 0};
     window.draw_image(topLeftCorner, image, window.width(), window.height());
-}
+}*/

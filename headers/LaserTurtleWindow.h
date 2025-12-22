@@ -1,13 +1,14 @@
 #pragma once
-#include "../LaserTurtleWindow.h"
+#include "LaserTurtleWindow.h"
 #include "constants.h"
 // #include "AnimationWindow.h"
 // #include "headers/widgets/Button.h"
 // #include "widgets/DropdownList.h"
 #include "pageMode.h"
 #include "difficulty.h"
+#include <SFML/Window.hpp>
 
-class LTWindow {
+class LTWindow : sf::Window {
     public:
         LTWindow();
         void startKnappCallback();
@@ -22,9 +23,9 @@ class LTWindow {
         int randInt();
         random_device rd;
         default_random_engine g;
-        bool should_close() {return false;};
+        bool should_close();
 
-        void updateFrame(){int i=0;};
+        void updateFrame();
         pageMode currentPageMode;
         difficulty diff;
         bool gameOver;
