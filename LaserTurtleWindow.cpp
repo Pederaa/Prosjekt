@@ -1,10 +1,10 @@
-#include "LaserTurtleWindow.h"
-#include "gameRunner.h"
-#include "AnimationWindow.h"
-#include "widgets/Button.h"
-#include "std_lib_facilities.h"
-#include "constants.h"
-#include "pageMode.h"
+#include "headers/LaserTurtleWindow.h"
+#include "headers/gameRunner.h"
+// #include "headers/AnimationWindow.h"
+// #include "widgets/Button.h"
+#include "headers/std_lib_facilities.h"
+#include "headers/constants.h"
+#include "headers/pageMode.h"
 #include <filesystem>
 
 void LTWindow::startKnappCallback(){
