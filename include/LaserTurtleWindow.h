@@ -6,7 +6,7 @@
 // #include "widgets/DropdownList.h"
 #include "pageMode.h"
 #include "difficulty.h"
-#include <SFML/Window.hpp>
+#include "SFML/Window.hpp"
 
 class LTWindow : sf::Window {
     public:
