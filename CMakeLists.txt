@@ -1,11 +1,23 @@
-cmake_minimum_required(VERSION 3.10.0)
-project(Laserturtle VERSION 0.1.0 LANGUAGES C CXX)
+cmake_minimum_required(VERSION 3.21.0)
+project(Laserturtle VERSION 0.1.0 LANGUAGES CXX)
 
-find_package(SFML COMPONENTS graphics window system REQUIRED)
+find_package(SFML CONFIG REQUIRED COMPONENTS graphics window system)
 
-add_executable(Laserturtle backgroundGenerator.cpp Bomb.cpp eggsManager.cpp explotionManager.cpp gameRunner.cpp laserCannon.cpp LaserTurtleWindow.cpp main.cpp numBomb.cpp readKeyInput.cpp textBomb.cpp typingScreen.cpp)
+add_executable(Laserturtle 
+    src/backgroundGenerator.cpp 
+    src/Bomb.cpp 
+    src/eggsManager.cpp 
+    src/explotionManager.cpp 
+    src/gameRunner.cpp 
+    src/laserCannon.cpp 
+    src/LaserTurtleWindow.cpp 
+    src/main.cpp 
+    src/numBomb.cpp 
+    src/readKeyInput.cpp 
+    src/textBomb.cpp 
+    src/typingScreen.cpp)
 
-target_include_directories(Laserturtle PRIVATE${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(Laserturtle PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_link_libraries(Laserturtle
     PRIVATE
@@ -16,4 +28,3 @@ target_link_libraries(Laserturtle
 
 include(CTest)
 enable_testing()
-
