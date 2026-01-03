@@ -1,5 +1,0 @@
-{
-  "cmake.configurePreset": "dev",
-  "cmake.buildDirectory": "${workspaceFolder}/build",
-  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
-}
